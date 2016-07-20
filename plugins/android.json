@@ -9,6 +9,9 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "nl.welten.arlearn.hands"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "nl.welten.arlearn.hands"
         }
     },
     "dependent_plugins": {}

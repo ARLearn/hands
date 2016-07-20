@@ -29,3 +29,10 @@ platforms/android/CordovaLib/bin
 platforms/android/CordovaLib/gen
 platforms/android/CordovaLib/local.properties
 .gitignore~
+
+
+platforms/android/.gradle/2.2.1/taskArtifacts/cache.properties.lock
+
+platforms/android/.gradle/2.2.1/taskArtifacts/fileHashes.bin
+
+*.xml~
