@@ -6,6 +6,10 @@ angular.module('ARLearn')
                 templateUrl: '/templates-hands/splash.html'
 
             })
+            .when('/login', {
+                templateUrl: '/templates-hands/login.html'
+
+            })
 
             .otherwise({redirectTo: '/splash'});
 
