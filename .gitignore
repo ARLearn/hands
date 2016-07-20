@@ -4,5 +4,6 @@
 sync.sh
 
 sync.sh~
-
 www/www.iml
+platforms/android/*
+platforms/android/
