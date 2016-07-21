@@ -5285,8 +5285,7 @@ button.close {
  }
  
  .main-header {
-     height: 130px;
-    text-align: right;
+    height: 120px;
     background: #feca19;
  }
  
@@ -5312,3 +5311,32 @@ button.close {
  .background-cover {
     background-image: url('../images/bg_mainmenu.jpg');
  }
+ 
+ #nav-button {
+	 width:35%;
+	 padding: 25px;
+ }
+ 
+  #nav-location {
+	 width:30%;
+ }
+ 
+ #score_bg {
+	background-image: url('../images/score.png');
+	background-position:right;
+	background-repeat:no-repeat;
+	height: 90px;
+	margin-top: 15px;
+	width:35%;
+	text-align: right;
+	padding-right: 90px;
+	
+ }
+ 
+#score {
+	margin-top:12px;
+	font-size: 34px;
+ }
+ 
+.btn-back {
+}
