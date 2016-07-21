@@ -1,4 +1,4 @@
-angular.module('ARLearn').controller('PhoneGapLoginController', function ($scope, Session, $location) {
+angular.module('ARLearn').controller('PhoneGapLoginController', function ($scope, $window, Session, $location) {
     var ref;
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -19,7 +19,7 @@ angular.module('ARLearn').controller('PhoneGapLoginController', function ($scope
             ref.close();
             console.log("session query:"+Session.getAccessToken());
 
-            cordova.InAppBrowser.open('index.html#/splash', '_self', 'location=no');
+            $window.history.back();
         }
     }
 
@@ -27,6 +27,10 @@ angular.module('ARLearn').controller('PhoneGapLoginController', function ($scope
     $scope.openGoogle = function() {
         ref = cordova.InAppBrowser.open('https://accounts.google.com/o/oauth2/auth?redirect_uri=http://streetlearn.appspot.com/oauth/google&response_type=code&client_id=594104153413-8ddgvbqp0g21pid8fm8u2dau37521b16.apps.googleusercontent.com&approval_prompt=force&scope=https://www.googleapis.com/auth/userinfo.profile%20%20https://www.googleapis.com/auth/userinfo.email', '_self', 'location=yes');
         ref.addEventListener('loadstart', eventListener );
+    }
+
+    $scope.openTwitter = function(){
+        $window.history.back();
     }
 
 });

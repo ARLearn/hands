@@ -3,7 +3,8 @@ angular.module('ARLearn')
 
         $routeProvider
             .when('/splash', {
-                templateUrl: 'templates-hands/splash.html'
+                templateUrl: 'templates-hands/splash.html',
+                controller: 'HomeController'
 
             })
             .when('/mainmenu', {
