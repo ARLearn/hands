@@ -10,6 +10,11 @@ angular.module('ARLearn')
                     method: 'GET',
                     isArray: false,
                     url: config.server+'/rest/account/accountDetails/:fullId'
+                },
+                'createAnonymousContact': {
+                    method: 'GET',
+                    isArray: false,
+                    url: config.server+'/rest/account/createAnonymousContact/:email/:name'
                 }
 
             });

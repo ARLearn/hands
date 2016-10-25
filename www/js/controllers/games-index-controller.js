@@ -94,7 +94,6 @@ angular.module('ARLearn').controller('GamesIndexController', function ($scope, $
     };
 
     ChannelService.register('org.celstec.arlearn2.beans.game.Game', function (notification) {
-        console.log(notification.gameId);
         GameService.refreshGame(notification.gameId).then(function (data) {
             console.log('refresh complete');
         });

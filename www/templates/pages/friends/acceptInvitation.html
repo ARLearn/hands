@@ -1,0 +1,78 @@
+<arl-header></arl-header>
+<arl-sidebar></arl-sidebar>
+<div class="content-wrapper">
+
+
+
+    <section class="content-header">
+        <div  class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i></a></li>
+
+                <li class="active"><i class="fa fa-users"></i> Accept Invitation</li>
+            </ol>
+        </div>
+
+        <h1 class="dashboardtitle">Accept invitation
+
+        </h1>
+
+
+    </section>
+
+    <section class="content" ng-show="invitationExpired">
+
+        <div class="row" >
+
+            <!-- /.col -->
+            <div class="col-md-offset-3 col-md-6">
+                <div class="box box-default box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">This invitation is no longer valid</h3>
+
+
+                    </div>
+                    <!-- /.box-header -->
+
+                    <div class="box-footer">
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+
+            <!-- /.col -->
+        </div>
+    </section>
+
+
+    <section class="content" ng-hide="invitationExpired">
+
+        <div class="row">
+
+            <!-- /.col -->
+            <div class="col-md-offset-3 col-md-6">
+                <div class="box box-default box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{name}} invite you</h3>
+
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        to become contacts in ARLearn
+                    </div>
+                    <div class="box-footer">
+                        <button class="btn btn-primary"  ng-click="accept()">Accept</button>
+                        <button class="btn btn-default" ng-click="deny()">Deny</button>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+
+            <!-- /.col -->
+        </div>
+    </section>
+</div>

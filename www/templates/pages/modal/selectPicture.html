@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h3 class="modal-title">Select game asset</h3>
+</div>
+    <div class="modal-body table-responsive no-padding" style="overflow: visible;">
+        <table class="table table-hover">
+            <tbody>
+            <tr>
+                <th>Filename</th>
+                <th>Size</th>
+                <!--<th>Runs</th>-->
+            </tr>
+            <tr ng-repeat="asset in assets|filter:'/generalItems/'+itemId" ng-class="asset.path==active?'active':''" ng-click="setActive(asset.path)">
+
+                <td>{{asset.path| limitTo:100:(('/generalItems/'+itemId+'/').length)}} </td>
+                <td>{{asset.size | bytes}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,213 @@
+<arl-header></arl-header>
+<arl-sidebar></arl-sidebar>
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            {{game.title}}
+            <small>{{rights}}</small>
+        </h1>
+        <div ng-bind-html="game.description"></div>
+    </section>
+
+    <section class="content-header">
+        <h1>
+            Game Editors
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-6 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About the game</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <form novalidate>
+                                <div class="form-group">
+                                    <label for="gameTitle">Game title</label>
+                                    <input required type="name" class="form-control" id="gameTitle"
+                                           placeholder="Enter a title for your game"
+                                           ng-model="game.title">
+                                </div>
+                            </form>
+
+                            <label>Game Description</label>
+                            <text-angular ta-toolbar="[['html']]" id="gameDescription"
+                                          name="description"
+                                          ng-model="game.description"></text-angular>
+                        </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="col-lg-6 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Location of this game</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-checked="showMap" ng-model="showMap" > This game is location based
+                                </label>
+                            </div>
+
+
+                            <div class="small-box bg-white " ng-if="currentMap == 'gameEdit'" >
+                                <ui-gmap-google-map ng-show="showMap" center='map.center' zoom='map.zoom'>
+                                    <ui-gmap-marker options="options"
+                                                    coords="coords" idkey="game.gameId"
+                                                    events="events"
+                                    >
+
+                                </ui-gmap-google-map>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div><!-- ./col -->
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Share this game</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="game.sharing" value="1" checked="" checked="">
+                                        Private
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="game.sharing" value="2">
+                                        Anyone with link
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="game.sharing" value="3">
+                                        Public on web
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div><!-- ./col -->
+
+            <div class="col-lg-6 col-xs-12" ng-show="game.sharing ==3">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">License</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <p class="help-block">Choose a creative commons license</p>
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="game.licenseCode" value="cc-by" checked>
+                                        Attribution CC BY
+
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="game.licenseCode" value="cc-by-nd">
+                                        Attribution-NoDerivs BY-ND
+
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="game.licenseCode" value="cc-by-sa">
+                                        Attribution-ShareAlike BY-SA
+
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="game.licenseCode" value="cc-by-nc">
+                                        Attribution-NonCommercial BY-NC
+
+
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="game.licenseCode" value="cc-by-nc-sa">
+                                        Attribution-NonCommercial-ShareAlike BY-NC-SA
+
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="game.licenseCode" value="cc-by-nc-nd">
+                                        Attribution-NonCommercial-NoDerivs BY-NC-ND
+
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div><!-- ./col -->
+
+
+
+        </div>
+        <div class="row" ng-show="accountLevel == 1">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Json editor</h3>
+
+                    </div>
+
+                    <div class="box-body ">
+                        <div class="form-group">
+
+                            <textarea class="form-control" rows="50" placeholder="{}"
+                                      json-text style="margin-top: 0px; margin-bottom: 0px; height: 500px;" ng-model="game"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row"><br></div>
+
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <button class="btn btn-primary" ng-disabled="game.title.length<2" ng-click="ok()">Save</button>
+                <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+            </div><!-- ./col -->
+        </div>
+    </section>
+
+</div>

@@ -37,7 +37,9 @@ angular.module('ARLearn').service('PlayerService', function ($q, Player, Team,Ca
                         }
                         dataCache.put(runId, playersArray);
                         players[runId].length = 0;
-                        players[runId].push(...playersArray);
+                        //players[runId].push(...playersArray);
+                        players[runId].push.apply(players[runId],playersArray)
+
                     }
 
                 }

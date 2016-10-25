@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add game asset</h3>
+</div>
+<div class="modal-body">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="file">Select file to upload</label>
+            <input type="file" id="file" onchange="angular.element(this).scope().setFile(this)">
+
+        </div>
+
+        <div class="form-group" ng-hide="key">
+            <label for="asset">Asset name</label>
+            <input type="text" class="form-control" id="asset" placeholder="type a name for your file" ng-model="data.key">
+        </div>
+
+    </form>
+
+</div>
+<div class="modal-footer">
+
+    <button class="btn btn-primary" ng-disabled="uploading || data.key=='' || files.length == 0" ng-click="up()">
+        <i ng-show="uploading" class="fa fa-spinner fa-spin  fa-fw"></i>
+        Upload</button>
+    <button class="btn btn-default" ng-click="cancel()">Close</button>
+</div>

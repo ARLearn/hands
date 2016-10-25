@@ -1,0 +1,53 @@
+<div>
+
+    <arl-header></arl-header>
+    <arl-sidebar></arl-sidebar>
+    <div class="content-wrapper">
+
+        <section class="content-header">
+
+            <h1>
+                Activity feed
+
+            </h1>
+
+        </section>
+
+        <section class="content-header">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Activity Feed</h3>
+
+
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <ul class="products-list product-list-in-box">
+                                <li class="item" ng-repeat="activity in stream">
+                                    <div class="product-img">
+                                        <img class="img-circle"
+                                             src="{{authors[activity.actor.account.name].grav}}"
+                                             alt="Product Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-title">{{authors[activity.actor.account.name].name}} {{getVerb(activity)}}  <a href="{{gethref(activity)}}/edit">{{getObject(activity)}}</a></div>
+
+                                    <span class="product-description">
+                                      {{activity.published | date : format : timezone}}
+                                    </span>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- /.box-body -->
+
+                        <!-- /.box-footer -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

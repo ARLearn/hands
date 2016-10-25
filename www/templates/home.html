@@ -1,0 +1,78 @@
+<div ng-show="isLoggedIn()">
+
+    <arl-header></arl-header>
+    <arl-sidebar></arl-sidebar>
+    <div class="content-wrapper">
+
+
+        <arl-banner></arl-banner>
+
+        <section class="content-header">
+
+            <h1>
+                Featured Games
+
+            </h1>
+
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" ng-repeat="game in games | orderBy: '-rank'">
+
+                    <!-- Gamecard -->
+                    <arl-game-card title="game.data.title"
+                                   id="game.data.gameId"
+                                   description="game.data.description"
+                                   icon="thumbnailUrl(game.gameId)"
+                    ></arl-game-card>
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div ng-hide="isLoggedIn()">
+    <arl-header-un-auth></arl-header-un-auth>
+
+
+    <section class="content-header">
+        <h1>
+            ARLearn
+            <small> {{'arl.games.gamelibrary' | translate}}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        </ol>
+    </section>
+
+    <arl-banner></arl-banner>
+    <section class="content-header">
+
+        <h1>
+            Featured Games
+
+        </h1>
+
+    </section>
+
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" ng-repeat="game in games | orderBy: '-rank'">
+
+                <!-- Gamecard -->
+                <arl-game-card title="game.data.title"
+                               id="game.data.gameId"
+                               description="game.data.description"
+                               icon="thumbnailUrl(game.gameId)"
+                ></arl-game-card>
+
+            </div>
+        </div>
+    </section>
+
+
+</div>

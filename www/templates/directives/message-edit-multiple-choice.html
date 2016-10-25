@@ -1,0 +1,31 @@
+<div class="col-lg-6 col-xs-12">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Multiple Choice</h3>
+            <div class="box-tools" >
+                <button type="button" class="btn btn-default btn-sm" ng-click="add()"><i class="fa fa-plus"></i></button>
+            </div>
+
+        </div>
+
+
+        <div class="box-body ">
+            <label>
+                <input type="checkbox"  ng-model="item.showFeedback">
+                Enable feedback
+            </label>
+            <div class="form-group">
+
+                <arl-message-edit-multiple-choice-item
+                        feedback = "item.showFeedback"
+                        number = "{{$index+1}}" answer="item.answers[$index]"
+                        ng-repeat="answer in item.answers track by $index"></arl-message-edit-multiple-choice-item>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

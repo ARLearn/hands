@@ -11,13 +11,20 @@ angular.module('ARLearn')
                 templateUrl: 'templates-hands/mainmenu.html'
 
             })
+            .when('/arcadelist', {
+                templateUrl: 'templates-hands/arcade-list.html'
+
+            })
             .when('/login', {
                 templateUrl: 'templates-hands/login.html',
 
                 controller: 'PhoneGapLoginController'
 
             })
-
+            .when('/play/run/:runId/game/:gameId/message/:itemId', {
+                templateUrl: '/templates/play/run/message.html',
+                controller: 'RunItemController'
+            })
             .otherwise({redirectTo: '/splash'});
 
         //var h5m = (typeof html5Mode !== 'undefined') ? html5Mode : true;

@@ -105,6 +105,15 @@ angular.module('ARLearn').service('GeneralItemService', function ($q, Item,ItemV
             );
             return deferred.promise;
         },
+        deleteFilePath: function(gameId, path) {
+            var deferred = $q.defer();
+            Item.deleteFilePath({gameId:gameId, path:path}).$promise.then(
+                function (data) {
+                    deferred.resolve(data);
+                }
+            );
+            return deferred.promise;
+        },
         getItemFromCache: function(id) {
             var dataCache = CacheFactory.get('itemsCache');
             return dataCache.get(id);

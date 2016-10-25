@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h3 class="modal-title">Create Run</h3>
+</div>
+<div class="modal-body">
+    <form novalidate>
+        <div class="form-group">
+            <label for="runTitle">Run title</label>
+            <input required type="name" class="form-control" id="runTitle" placeholder="Enter a title for your run"
+                   ng-model="run.title">
+        </div>
+    </form>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-disabled="run.name.length<2" ng-click="ok()">OK</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>

@@ -153,7 +153,6 @@ angular.module('ARLearn').controller('GamesShowController', function( $scope, $s
 
     ChannelService.register('org.celstec.arlearn2.beans.game.Game', function (notification) {
         if (notification.gameId == $scope.gameId){
-            console.log('todo update');
             loadAccessRules();
         }
 

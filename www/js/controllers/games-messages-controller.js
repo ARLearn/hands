@@ -1,4 +1,4 @@
-angular.module('ARLearn').controller('GamesMessagesController', function ($rootScope, $scope, $sce, $q, $routeParams, Game, GameService, GeneralItemService, ChannelService, $uibModal) {
+angular.module('ARLearn').controller('GamesMessagesController', function ($rootScope, $scope, $sce, $q, $location, $routeParams, Game, GameService, GeneralItemService, ChannelService, $uibModal) {
 
         GameService.getGameById($routeParams.gameId).then(function (data) {
             if (data.error) {
@@ -9,6 +9,9 @@ angular.module('ARLearn').controller('GamesMessagesController', function ($rootS
             $scope.game = data;
             $scope.gameId = data.gameId;
         });
+        $scope.sort = $location.path().indexOf("sort") != -1;
+        $scope.sortReverse = false;
+
 
         GeneralItemService.loadItems($routeParams.gameId).then(function (data) {
             $scope.items = data;
@@ -95,7 +98,6 @@ angular.module('ARLearn').controller('GamesMessagesController', function ($rootS
                 function (result) {
 
                     item.dependsOn = $scope.dependsOn;
-                    console.log(item);
                     GeneralItemService.saveItem(item).then(function (data) {
                         //$scope.item = data;
                         //$window.history.back();
@@ -137,6 +139,38 @@ angular.module('ARLearn').controller('GamesMessagesController', function ($rootS
             });
             filtered.sort(function (a, b) {
                 return (a['name'] > b['name'] ? 1 : -1);
+                //return (a['sortKey'] > b['sortKey'] ? 1 : -1);
+            });
+            if (reverse) filtered.reverse();
+            return filtered;
+        };
+    })
+    .filter('filterMessagesSort', function () {
+        return function (items, field, reverse) {
+            var filtered = [];
+            if (field) field = field.toLowerCase();
+            angular.forEach(items, function (item) {
+                if (!field
+                    || item.name.toLowerCase().indexOf(field) > -1
+                    || item.type.toLowerCase().indexOf(field) > -1) filtered.push(item);
+            });
+            filtered.sort(function (a, b) {
+
+                return (a['sortKey'] > b['sortKey'] ? 1 : -1);
+            });
+            if (reverse) filtered.reverse();
+            return filtered;
+        };
+    })
+    .filter('filterSortKey', function () {
+        return function (items, field, reverse) {
+            var filtered = [];
+            angular.forEach(items, function (item) {
+                if (!field
+                    ) filtered.push(item);
+            });
+            filtered.sort(function (a, b) {
+                return (a['sortKey'] > b['sortKey'] ? 1 : -1);
             });
             if (reverse) filtered.reverse();
             return filtered;

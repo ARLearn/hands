@@ -1,0 +1,72 @@
+<aside class="main-sidebar __web-inspector-hide-shortcut__" id="target-test" >
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style="height: auto;">
+
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img ng-src="{{gravatarUrl}}" class="img-circle" alt="User Image" data-pin-nopin="true">
+            </div>
+            <div class="pull-left info">
+                <p>{{name}}</p>
+            </div>
+        </div>
+
+        <!--&lt;!&ndash; search form &ndash;&gt;-->
+        <!--<form action="#" method="get" class="sidebar-form">-->
+            <!--<div class="input-group">-->
+                <!--<input type="text" name="q" class="form-control" placeholder="Search...">-->
+              <!--<span class="input-group-btn">-->
+                <!--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>-->
+                <!--</button>-->
+              <!--</span>-->
+            <!--</div>-->
+        <!--</form>-->
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <!--<li class="header">MAIN NAVIGATION</li>-->
+
+            <li class="treeview">
+                <a href="#/games">
+                    <i class="fa fa-gamepad"></i> <span>{{'arl.sidebar.games' | translate}}</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu menu-open" style="display: block;" ng-show="showGame">
+                    <li class="active" >
+                        <a href="#/games/{{gameId}}"><i class="fa fa-circle-o"></i>{{ game.title | limitTo: 20 }}{{game.title.length > 20 ? '...' : ''}} <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul ng-show="canEdit" class="treeview-menu menu-open" style="display: block;">
+
+                            <li>
+                                <a href="#/games/{{gameId}}/messages"><i class="fa fa-envelope-o"></i>{{'arl.sidebar.messages' | translate}}<i class="fa fa-angle-left pull-right"></i></a>
+                                <a href="#/games/{{gameId}}/graph"><i class="fa fa-share-alt"></i>{{'arl.sidebar.dependencygraph' | translate}}<i class="fa fa-angle-left pull-right"></i></a>
+                                <a href="#/games/{{gameId}}/activityfeed"><i class="fa fa-location-arrow"></i>Activity feed<i class="fa fa-angle-left pull-right"></i></a>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </li>
+            <li class="treeview">
+                <a href="#/friends">
+                    <i class="fa fa-users"></i>
+                    <span>{{'arl.sidebar.friends' | translate}}</span>
+
+                </a>
+
+            </li>
+
+            <li class="treeview">
+                <a href="#/library">
+                    <i class="fa fa-book"></i>
+                    <span>{{'arl.games.gamelibrary' | translate}}</span>
+
+                </a>
+
+            </li>
+
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

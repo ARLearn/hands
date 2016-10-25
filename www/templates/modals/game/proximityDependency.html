@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h3 class="modal-title">Define when this message must appear</h3>
+</div>
+<div class="modal-body" ng-if="currentMap == 'proxDep'" >
+
+    Define the zone that a user must enter, for the message (represented by the maker) to appear. <br>
+    <ui-gmap-google-map  center='map.center' zoom='map.zoom'>
+        <ui-gmap-marker ng-show="showMarker" options="options"
+                        coords="markerCoords" idkey="item.id"
+
+
+        ></ui-gmap-marker>
+
+
+        <ui-gmap-circle center="c.center" stroke="c.stroke" fill="c.fill" radius="c.radius"
+                        visible="c.visible" geodesic="c.geodesic" editable="c.editable" draggable="c.draggable" clickable="c.clickable" control="c.control"></ui-gmap-circle>
+    </ui-gmap-google-map>
+<br>
+
+        <label class="control-label">Range: {{c.radius | number:0:2}} m</label>
+
+
+
+</div>
+<br>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">Create</button>
+    <button class="btn btn-default" ng-click="cancel()">Close</button>
+</div>

@@ -1,0 +1,17 @@
+<div>
+<section class="content-header">
+    <h1>
+        {{item.name}}
+    </h1>
+    {{item.type}}
+
+</section>
+
+<section class="content">
+    <div ng-bind-html="item.richText"></div>
+</section>
+
+    <arl-data-collection ng-show="item.openQuestion" item="item" runId="runId"></arl-data-collection>
+
+
+</div>

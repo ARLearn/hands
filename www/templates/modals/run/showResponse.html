@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h3 class="modal-title">Show Response </h3>
+</div>
+<div class="modal-body">
+    <div ng-show="response.imageUrl">
+        <img height= "300" ng-src="{{response.imageUrl}}"/>
+    </div>
+    <div ng-show="response.videoUrl">
+        <video controls="" autoplay="" style="width: 100%;">
+            <source ng-src="{{response.videoUrl | trustUrl}}"></video>
+    </div>
+
+
+    <div ng-show="response.audioUrl">
+
+        <video controls="" autoplay="" name="media">
+            <source ng-src="{{response.audioUrl | trustUrl}}" type="audio/aac"></video>
+    </div>
+
+
+    </div>
+
+
+</div>
+<div class="modal-footer">
+    <a class="btn btn-default" ng-show="response.imageUrl" href="{{response.imageUrl | trustUrl}}">Download Image</a>
+    <a class="btn btn-default" ng-show="response.videoUrl" href="{{response.videoUrl | trustUrl}}">Download Video</a>
+    <a class="btn btn-default" ng-show="response.audioUrl" href="{{response.audioUrl | trustUrl}}">Download Audio</a>
+
+    <button class="btn btn-default" ng-click="cancel()">Close</button>
+</div>

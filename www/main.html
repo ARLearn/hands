@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ARLearn" ng-controller='headController'>
 
 <head>
 
@@ -10,14 +10,14 @@
     <meta name="author" content="">
 
     <title>Health and Safety Games</title>
-    <script type="text/javascript" src="cordova.js"></script>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
     <!-- Bootstrap Core CSS + other Standard CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
 
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/themes/{{styleIndex}}.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -32,7 +32,7 @@
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
-<body ng-app="ARLearn" id="page-top" >
+<body  id="page-top" >
 <div ng-view>
 
 </div>
@@ -62,13 +62,38 @@
      <script src="./js-hands/app.js"></script>
      <script src="./js-hands/routes.js"></script>
 
+
 <!-- Services -->
 <script src="./js/services/session.js"></script>
+<script src="./js/services/game-service.js"></script>
+<script src="./js/services/run-service.js"></script>
+<script src="./js/services/item-service.js"></script>
 <script src="./js/services/property-service.js"></script>
+<script src="./js/services/player-service.js"></script>
+<script src="./js/services/account-service.js"></script>
+<script src="./js/services/channel-service.js"></script>
+<script src="./js/services/response-service.js"></script>
+<script src="./js/services/chat-service.js"></script>
+<script src="./js/services/action-service.js"></script>
+
+<!-- Filters -->
+<script src="./js/filters/custom-filters.js"></script>
+
+<!-- Resources -->
+<script src="./js/resources/account.js"></script>
+<script src="./js/resources/game.js"></script>
+<script src="./js/resources/run.js"></script>
+<script src="./js/resources/item.js"></script>
+<script src="./js/resources/store.js"></script>
+<script src="./js/resources/player.js"></script>
+<script src="./js/resources/oauth.js"></script>
+<script src="./js/resources/response.js"></script>
+<script src="./js/resources/chat.js"></script>
+<script src="./js/resources/action.js"></script>
 
 <!-- Directives -->
 <script src="./js-hands/directives/hands-header.js"></script>
-
+<script src="./js-hands/directives/hands-lines.js"></script>
 
 
 <script src="./js/controllers/home-controller.js"></script>
@@ -77,6 +102,17 @@
 
 <script src="./js-hands/controllers/phonegap-login-controller.js"></script>
 <script src="./js-hands/controllers/splash-controller.js"></script>
+
+
+<script src="./js/controllers/items-index-controller.js"></script>
+
+
+<script src="./js/controllers/play-controller.js"></script>
+<script src="./js/controllers/play/single-choice-controller.js"></script>
+<script src="./js/controllers/play/play-audio-controller.js"></script>
+<script src="./js/controllers/play/datacollection-controller.js"></script>
+<script src="./js/controllers/play/scan-tag-controller.js"></script>
+<script src="./js/controllers/play/image-click-question-controller.js"></script>
 </body>
 
 </html>

@@ -18,3 +18,11 @@ angular.module('ARLearn', ['ngRoute',  'ngResource',
 //    $http.defaults.headers.common['Authorization'] = 'GoogleLogin auth='+localStorage.getItem('accessToken');
 //
 //})
+
+angular.module('ARLearn').controller('headController', function($scope) {
+    $scope.styleIndex = 0
+    $scope.changeTheme = function(index) {
+        $scope.styleIndex=index;
+
+    };
+});

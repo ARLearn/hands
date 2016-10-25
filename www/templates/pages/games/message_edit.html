@@ -1,0 +1,194 @@
+<arl-header></arl-header>
+<arl-sidebar></arl-sidebar>
+
+<div class="content-wrapper" ng-show="show">
+    <section class="content-header">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i></a></li>
+                <li><a href="#/games"> <i class="fa fa-gamepad"></i> Games</a></li>
+                <li><a href="#/games/{{game.gameId}}/messages"><i class="fa fa-envelope-o"></i> {{game.title}}</a></li>
+                <li class="active"> {{item.name}}</li>
+            </ol>
+        </div>
+
+        <h1>
+            {{item.name}}
+            <small>{{game.title}}</small>
+        </h1>
+
+
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-6 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">About the message</h3>
+                        <div class="box-tools" ng-show="item.type == 'org.celstec.arlearn2.beans.generalItem.VideoObject'">
+                            <button class="btn btn-primary" ng-click="uploadModal('video')"><i class="fa fa-cloud-upload"></i>
+                                Upload Video
+                            </button>
+                        </div>
+                        <div class="box-tools" ng-show="item.type == 'org.celstec.arlearn2.beans.generalItem.AudioObject'">
+                            <button class="btn btn-primary" ng-click="uploadModal('audio')"><i class="fa fa-cloud-upload"></i>
+                                Upload Audio
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <form novalidate>
+                                <div class="form-group">
+                                    <label for="itemTitle">Message title</label>
+                                    <input required type="name" class="form-control" id="itemTitle"
+                                           placeholder="Enter a title for your message"
+                                           ng-model="item.name">
+                                </div>
+                                <div ng-show="sort" class="form-group">
+                                    <label for="itemTitle">Sort Key</label>
+                                    <input required type="number" class="form-control" id="itemTitle"
+                                           placeholder="Enter a number to sort this message in the authoring tool"
+                                           ng-model="item.sortKey">
+                                </div>
+                            </form>
+
+                            <label>Message content</label>
+                            <!--<text-angular ta-toolbar="[['h1','h2','h3', 'html', 'colourBlue']]" id="itemDescription"-->
+                            <!--name="description"-->
+                            <!--ng-model="item.richText"></text-angular>-->
+
+                            <div text-angular ta-unsafe-sanitizer="true" ng-model="item.richText"></div>
+                        </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-6 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Message files</h3>
+                        <div class="box-tools">
+                            <button class="btn btn-primary" ng-click="uploadModal()"><i class="fa fa-cloud-upload"></i>
+                                Upload
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="box-body table-responsive no-padding" style="overflow: visible;">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th>Filename</th>
+                                <th>Size</th>
+                                <th width="50px"></th>
+                            </tr>
+                            <tr ng-repeat="asset in assets|filter:'/generalItems/'+itemId">
+
+                                <td>{{asset.path | limitTo:100:(('/generalItems/'+itemId+'/').length)}}</td>
+                                <td>{{asset.size | bytes}}</td>
+                                <td>
+                                    <div class="btn-group" style="overflow: visible !important;"
+                                    >
+                                        <button class="btn btn-sm btn-default dropdown-toggle" href="#"
+                                                data-toggle="dropdown">
+                                            <span class='fa fa-gear'></span> <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu stay-open pull-right" role="menu">
+                                            <li role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="removeFile(asset)">Remove file</a>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <arl-message-edit-data-collection ng-show="item.type == 'org.celstec.arlearn2.beans.generalItem.NarratorItem'"></arl-message-edit-data-collection>
+
+            <arl-message-edit-multiple-choice ng-show="item.type == 'org.celstec.arlearn2.beans.generalItem.SingleChoiceTest' || item.type == 'org.celstec.arlearn2.beans.generalItem.MultipleChoiceTest'"
+                                              item="item"
+            ></arl-message-edit-multiple-choice>
+
+            <div class="col-lg-6 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Message location</h3>
+
+                    </div>
+
+                    <div class="box-body " >
+                        <label>
+                            <input type="checkbox" ng-model="positionMe.value" ng-click="positionOnMap($event)">
+                            Position message on map
+                        </label>
+
+                            <ui-gmap-google-map ng-show="positionMe.value" ng-if="currentMap == 'messageEdit'"  id="message-edit-map" center='map.center' zoom='map.zoom'>
+                                <ui-gmap-marker  options="options"
+                                                coords="coords" idkey="game.gameId"
+                                                events="events"
+                                > </ui-gmap-marker>
+
+                            </ui-gmap-google-map>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="row" ng-show="accountLevel == 1">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Json editor</h3>
+
+                    </div>
+
+                    <div class="box-body ">
+                        <div class="form-group">
+
+                            <textarea class="form-control" rows="50" placeholder="{}"
+                                      json-text style="margin-top: 0px; margin-bottom: 0px; height: 500px;" ng-model="item"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <button class="btn btn-primary" ng-disabled="game.title.length<2" ng-click="save()">Save</button>
+                <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+            </div><!-- ./col -->
+        </div>
+
+
+
+    </section>
+
+</div>

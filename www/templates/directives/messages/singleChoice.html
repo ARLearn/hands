@@ -1,0 +1,21 @@
+<div>
+    <section class="content-header">
+        <h1>
+            {{item.name}}
+        </h1>
+
+
+    </section>
+
+    <section class="content">
+        <div ng-bind-html="item.richText"></div>
+    </section>
+
+    <div ng-repeat="answer in item.answers">
+        <div
+             ng-class="{'librarySquare': answer.id == selection } "
+             ng-click="select(answer.id)">{{answer.answer}}- {{answer.id}}</div>
+    </div>
+
+    <div ng-show="selection" ng-click="submit()">Submit</div>
+</div>

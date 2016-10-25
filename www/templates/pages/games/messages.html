@@ -1,0 +1,230 @@
+<arl-header></arl-header>
+<arl-sidebar></arl-sidebar>
+<div class="content-wrapper fill" ng-hide="showNoAccess || show">
+    <section class="content ">
+        <div id="overlay">
+            <i class="fa fa-spinner fa-spin spin-big"></i>
+        </div>
+    </section>
+</div>
+
+<div class="content-wrapper" ng-show="showNoAccess">
+    <section class="content">
+        <div class="error-page">
+            <h2 class="headline text-yellow"> 404</h2>
+
+            <div class="error-content">
+                <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
+
+                <p>
+                    We could not find the game you were looking for.
+                    Meanwhile, you may <a href="#">return to dashboard</a>
+                </p>
+
+
+            </div>
+            <!-- /.error-content -->
+        </div>
+        <!-- /.error-page -->
+    </section>
+</div>
+
+<div class="content-wrapper" ng-show="show">
+
+
+    <section class="content-header">
+        <div  class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i></a></li>
+                <li><a href="#/games"> <i class="fa fa-gamepad"></i> Games</a></li>
+                <li class="active"><i class="fa fa-envelope-o"></i> {{game.title}}</li>
+            </ol>
+        </div>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary">Add message</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="addMessage('org.celstec.arlearn2.beans.generalItem.NarratorItem')">{{'arl.messages.org.celstec.arlearn2.beans.generalItem.NarratorItem' | translate}}</a></li>
+
+                <li><a ng-click="addMessage('org.celstec.arlearn2.beans.generalItem.VideoObject')">{{'arl.messages.org.celstec.arlearn2.beans.generalItem.VideoObject' | translate}}</a></li>
+                <li><a ng-click="addMessage('org.celstec.arlearn2.beans.generalItem.AudioObject')">{{'arl.messages.org.celstec.arlearn2.beans.generalItem.AudioObject' | translate}}</a></li>
+                <li><a ng-click="addMessage('org.celstec.arlearn2.beans.generalItem.ScanTag')">{{'arl.messages.org.celstec.arlearn2.beans.generalItem.ScanTag' | translate}}</a></li>
+                <li><a ng-click="addMessage('org.celstec.arlearn2.beans.generalItem.SingleChoiceTest')">{{'arl.messages.org.celstec.arlearn2.beans.generalItem.SingleChoiceTest' | translate}}</a></li>
+                <li><a ng-click="addMessage('org.celstec.arlearn2.beans.generalItem.MultipleChoiceTest')">{{'arl.messages.org.celstec.arlearn2.beans.generalItem.MultipleChoiceTest' | translate}}</a></li>
+            </ul>
+        </div>
+        <h1>
+            {{game.title}}
+        </h1>
+        <div ng-bind-html="gameDescription"></div>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Game messages</h3>
+
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control pull-right"
+                                       placeholder="Search" ng-model="query">
+
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding" style="overflow: visible;">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th width="40px">ID</th>
+                                <th ng-show="sort" ng-click="sortReverse = !sortReverse">
+                                    order
+                                    <span ng-show=" !sortReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="sortReverse" class="fa fa-caret-up"></span>
+                                </th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Tags</th>
+                                <th width="100px">Action</th>
+                                <!--<th>Runs</th>-->
+                            </tr>
+
+
+                            <!--<tr ng-repeat="(key, item) in items|filter:query">-->
+                               <!--<td> {{key}} </td>-->
+                                <!--</tr>-->
+
+                            <tr ng-hide="sort" ng-repeat="(key, item) in filtered = (items | filterMessages:query:false ) ">
+                                <!--"| orderBy:sortKey:sortReverse"-->
+                                <td>
+                                    <!--<div class="pull-left image" >-->
+                                    <!--<img width="28px" height="28px" ng-src="{{friend.gravatarUrl}}" class="img-circle" alt="User Image" data-pin-nopin="true">-->
+                                    <!--</div>-->
+                                    icon
+                                </td>
+                                <td>{{item.name}}</td>
+                                <td><span class="label label-info">{{'arl.messages.'+item.type | translate}}</span></td>
+                                <td>{{ item.description | limitTo: 30 }}{{item.description > 20 ? '...' : ''}}</td>
+                                <td><span class="label label-primary">{{item.tags}}</span></td>
+                                <td>
+                                    <div class="btn-group" style="overflow: visible !important;"
+                                    >
+                                        <button class="btn btn-sm btn-default dropdown-toggle" href="#"
+                                                data-toggle="dropdown">
+                                            <span class='fa fa-gear'></span> <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu stay-open pull-right" role="menu">
+                                            <li role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="removeMessage(item)">Remove message</a>
+                                            </li>
+                                            <li role="presentation" class="divider"></li>
+                                            <li role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="setAppear(item)"
+                                                    ng-show="!item.dependsOn ||item.dependsOn.type == 'org.celstec.arlearn2.beans.dependencies.ActionDependency'"
+                                                    >Appear condition </a>
+                                            </li>
+                                            <li role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="setProximityDependency(item)"
+                                                    ng-show="!item.dependsOn ||item.dependsOn.type == 'org.celstec.arlearn2.beans.dependencies.ProximityDependency'"
+                                            >Location based appear condition </a>
+                                            </li>
+                                            <li role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="removeDependency(item)"
+
+                                            >Remove Dependency</a>
+                                            </li>
+                                            <!--<li role="presentation"><a-->
+                                                    <!--role="menuitem"-->
+                                                    <!--">Disappear condition</a>-->
+                                            <!--</li>-->
+
+
+                                        </ul>
+                                    </div>
+                                    <a href="#/games/{{game.gameId}}/messages/{{item.id}}/edit">
+                                        <button class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr ng-show="sort" ng-repeat="(key, item) in filtered = (items | filterMessagesSort:query:sortReverse )">
+                                <!--"| orderBy:sortKey:sortReverse"-->
+                                <td>
+                                    <!--<div class="pull-left image" >-->
+                                    <!--<img width="28px" height="28px" ng-src="{{friend.gravatarUrl}}" class="img-circle" alt="User Image" data-pin-nopin="true">-->
+                                    <!--</div>-->
+                                    icon
+                                </td>
+                                <td ng-show="sort">{{item.sortKey}}</td>
+                                <td>{{item.name}}</td>
+                                <td><span class="label label-info">{{'arl.messages.'+item.type | translate}}</span></td>
+                                <td>{{ item.description | limitTo: 30 }}{{item.description > 20 ? '...' : ''}}</td>
+                                <td><span class="label label-primary">{{item.tags}}</span></td>
+                                <td>
+                                    <div class="btn-group" style="overflow: visible !important;"
+                                    >
+                                        <button class="btn btn-sm btn-default dropdown-toggle" href="#"
+                                                data-toggle="dropdown">
+                                            <span class='fa fa-gear'></span> <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu stay-open pull-right" role="menu">
+                                            <li role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="removeMessage(item)">Remove message</a>
+                                            </li>
+                                            <li role="presentation" class="divider"></li>
+                                            <li role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="setAppear(item)"
+                                                    ng-show="!item.dependsOn ||item.dependsOn.type == 'org.celstec.arlearn2.beans.dependencies.ActionDependency'"
+                                            >Appear condition </a>
+                                            </li>
+                                            <li role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="setProximityDependency(item)"
+                                                    ng-show="!item.dependsOn ||item.dependsOn.type == 'org.celstec.arlearn2.beans.dependencies.ProximityDependency'"
+                                            >Location based appear condition </a>
+                                            </li>
+                                            <li role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="removeDependency(item)"
+
+                                            >Remove Dependency</a>
+                                            </li>
+                                            <!--<li role="presentation"><a-->
+                                            <!--role="menuitem"-->
+                                            <!--">Disappear condition</a>-->
+                                            <!--</li>-->
+
+
+                                        </ul>
+                                    </div>
+                                    <a href="#/games/{{game.gameId}}/messages/{{item.id}}/edit/sort">
+                                        <button class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </section>
+
+</div>

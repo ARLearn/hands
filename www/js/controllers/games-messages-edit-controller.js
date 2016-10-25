@@ -1,10 +1,11 @@
-angular.module('ARLearn').controller('GamesMessageEditController', function($rootScope, $scope, $sce, $q, $routeParams, $uibModal, Game, GameService,ChannelService, GeneralItemService,$window) {
+angular.module('ARLearn').controller('GamesMessageEditController', function($rootScope, $scope, $sce, $q, $routeParams, $location, $uibModal, Game, GameService,ChannelService, GeneralItemService,$window) {
 
     $rootScope.currentMap = 'messageEdit';
     //$scope.$on('$viewContentLoaded', function () {
     //    var mapHeight = 300; // or any other calculated value
     //    $("#message-edit-map .angular-google-map-container").height(mapHeight);
     //});
+    $scope.sort = $location.path().indexOf("sort") != -1;
 
     GameService.getGameById($routeParams.gameId).then(function(data){
         if (data.error) {
@@ -47,6 +48,18 @@ angular.module('ARLearn').controller('GamesMessageEditController', function($roo
             }
         );
     };
+
+    $scope.removeFile = function(asset) {
+        console.log(asset);
+        GeneralItemService.deleteFilePath($routeParams.gameId, asset.path).then(
+            function (data) {
+                GameService.getGameAssets($routeParams.gameId).then(function(data){
+                    $scope.assets = data;
+                });
+
+            }
+        );
+    }
 
     $scope.map = { center: { }, zoom: 10 };
     if ($scope.item.lat) {
@@ -176,7 +189,6 @@ angular.module('ARLearn').controller("ModalDialogController", function ($scope, 
             iconclass: "fa fa-image",
 
             action: function (deferred,restoreSelection) {
-                console.log('here');
                 var thatLink = this;
                 // var sel = rangy.getSelection();
                 $uibModal.open({

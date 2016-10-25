@@ -1,4 +1,4 @@
-angular.module('ARLearn').service('GameService', function ($q, $sce, Game, CacheFactory) {
+angular.module('ARLearn').service('GameService', function ($q, $sce, Game, CacheFactory, AccountService) {
 
     CacheFactory('gamesCache', {
         maxAge: 24 * 60 * 60 * 1000, // Items added to this cache expire after 1 day
@@ -15,13 +15,18 @@ angular.module('ARLearn').service('GameService', function ($q, $sce, Game, Cache
     };
 
 
+
     var resumptionToken;
     var serverTime= 0;
     var serverTimeFirstInvocation;
+
+    var gamesParticipatelist = [];
+    var gamesParticipateLastSyncDate = 0;
+
     return {
         resumeLoadingGames: function(){
             var deferred = $q.defer();
-            var dataCache = CacheFactory.get('gamesCache');
+            //var dataCache = CacheFactory.get('gamesCache');
 
             Game.resume({resumptionToken: resumptionToken, from:serverTime})
                 .$promise.then(function (data) {
@@ -57,7 +62,7 @@ angular.module('ARLearn').service('GameService', function ($q, $sce, Game, Cache
         },
         getGameById: function (id) {
             var deferred = $q.defer();
-            var dataCache = CacheFactory.get('gamesCache');
+            //var dataCache = CacheFactory.get('gamesCache');
             if (dataCache.get(id)) {
                 deferred.resolve(dataCache.get(id));
             } else {
@@ -83,7 +88,7 @@ angular.module('ARLearn').service('GameService', function ($q, $sce, Game, Cache
             return deferred.promise;
         },
         refreshGame: function(id) {
-            var dataCache = CacheFactory.get('gamesCache');
+            //var dataCache = CacheFactory.get('gamesCache');
             if (dataCache.get(id)) {
                 delete games[id];
                 dataCache.remove(id);
@@ -101,11 +106,11 @@ angular.module('ARLearn').service('GameService', function ($q, $sce, Game, Cache
             return deferred.promise;
         },
         getGameFromCache: function (id) {
-            var dataCache = CacheFactory.get('gamesCache');
+            //var dataCache = CacheFactory.get('gamesCache');
             return dataCache.get(id);
         },
         storeInCache: function (game) {
-            var dataCache = CacheFactory.get('gamesCache');
+            //var dataCache = CacheFactory.get('gamesCache');
             dataCache.put(game.gameId, game);
 
         },
@@ -113,7 +118,7 @@ angular.module('ARLearn').service('GameService', function ($q, $sce, Game, Cache
 
         newGame: function(gameAsJson){
             var deferred = $q.defer();
-            var dataCache = CacheFactory.get('gamesCache');
+            //var dataCache = CacheFactory.get('gamesCache');
             if (gameAsJson.gameId){
                 dataCache.put(gameAsJson.gameId, gameAsJson);
             }
@@ -130,6 +135,15 @@ angular.module('ARLearn').service('GameService', function ($q, $sce, Game, Cache
 
         },
         removeContributor: function(accountFullId, gameId) {
+            AccountService.myDetails().then(
+                function(data){
+                    if (data.accountType+":"+data.localId == accountFullId){
+                        delete games[gameId];
+                        dataCache.remove(gameId);
+                    }
+
+                }
+            );
             return Game.removeContributor({gameId:gameId, accountFullId:accountFullId});
 
         },
@@ -141,6 +155,19 @@ angular.module('ARLearn').service('GameService', function ($q, $sce, Game, Cache
                 }
             );
             return deferred.promise;
+        },
+        getGamesParticipate: function(){
+            Game.getGamesParticipate({from:gamesParticipateLastSyncDate}).$promise.then(
+                function (data) {
+                    console.log(data.games);
+                    gamesParticipatelist.push.apply(gamesParticipatelist, data.games)
+
+                    //gamesParticipatelist.push(...data.games);
+                    console.log(gamesParticipatelist);
+                    gamesParticipateLastSyncDate = data.serverTime;
+                }
+            );
+            return gamesParticipatelist;
         }
 
     }

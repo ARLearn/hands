@@ -3,7 +3,6 @@ angular.module('ARLearn').controller('HomeController', function ($scope, $sce, S
     $scope.games = [];
 
     Store.getFeaturedByLanguage({lang:'nl'}).$promise.then(function(data){
-        console.log(data);
         var localData = data;
         for (var i = 0; i< data.games.length;i++) {
 

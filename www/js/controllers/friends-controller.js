@@ -78,7 +78,6 @@ angular.module('ARLearn').controller('FriendsController', function ($scope, Cont
     }
 
     $scope.removeContact = function(friend) {
-        console.log(friend)
         Contacts.removeContact({accountType:friend.accountType, localId:friend.localId}).$promise.then(
             function(data){
                 loadContacts();
@@ -92,7 +91,6 @@ angular.module('ARLearn').controller('FriendsController', function ($scope, Cont
 angular.module('ARLearn').controller("ModalInviteFriendCtrl", function ($scope, $uibModalInstance) {
     $scope.inv = {};
     $scope.send = function () {
-        console.log($scope.inv);
         $uibModalInstance.close($scope.inv);
         // for (var i = 0; i< $scope.selection.friends.length; i++){
         //     var friend = $scope.selection.friends[i];

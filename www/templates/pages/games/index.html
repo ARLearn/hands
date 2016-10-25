@@ -1,0 +1,43 @@
+<arl-header></arl-header>
+<arl-sidebar></arl-sidebar>
+
+<div class="content-wrapper fill" ng-hide="showNoAccess || show">
+    <section class="content ">
+        <div id="overlay">
+            <i class="fa fa-spinner fa-spin spin-big"></i>
+        </div>
+    </section>
+</div>
+<arl-no-access ng-show="showNoAccess"></arl-no-access>
+
+<div class="content-wrapper" ng-show="show">
+
+    <section class="content-header">
+        <div class="row">
+
+            <button type="button" class="btn btn-primary pull-right btn-space" ng-click="newGame()">{{'arl.games.newgame' | translate}}
+            </button>
+        </div>
+        <h1 class="dashboardtitle">{{'arl.games.mygames' | translate}}</h1>
+    </section>
+
+
+    <section class="content">
+        <div class="row" infinite-scroll='loadMoreGames()' infinite-scroll-distance='1'
+             infinite-scroll-immediate-check="true" infinite-scroll-disabled="disableGameLoading">
+            <div class="col-lg-3 col-xs-6" ng-repeat="(gameId, game) in games">
+
+                <!-- Gamecard -->
+
+                <arl-game-card title="game.title"
+                               description="game.description"
+                               id="game.gameId"
+                               icon="thumbnailUrl(game.gameId)"
+                ></arl-game-card>
+
+
+            </div><!-- ./col -->
+        </div>
+    </section>
+
+</div>

@@ -1,11 +1,27 @@
-angular.module('ARLearn').controller('RunController', function ($scope, $routeParams, ResponseService,  RunService, PlayerService, $uibModal,$gravatar, $window) {
+angular.module('ARLearn').controller('RunController', function ($scope, $routeParams, ChatService, ResponseService,  RunService, PlayerService, $uibModal,$gravatar, $window) {
 
     RunService.getRunById($routeParams.runId).then(function (data) {
         $scope.runTitle = data.title;
         $scope.runId = data.runId;
+        $scope.run = data;
+        $scope.run.runConfig = $scope.run.runConfig || {};
 
     });
 
+    ChatService.getThreads($routeParams.runId).then(function(threads) {
+        $scope.threads = threads;
+    });
+
+    $scope.save = function() {
+        RunService.newRun($scope.run);
+    }
+//    $scope.enableSelfRegister = function(value) {
+//        if ($scope.positionMe.value) {
+//console.log("true");
+//        } else {
+//            console.log("false");
+//        }
+//    }
     //PlayerService.getPlayersByRunId($routeParams.runId).then(function (data) {
     //
     //    $scope.players = data;
@@ -55,7 +71,24 @@ angular.module('ARLearn').controller('RunController', function ($scope, $routePa
         });
 
         modalInstance.result.then(function (data) {
-            console.log(data);
+
+        }, function () {
+            //user dismissed
+        });
+    };
+
+    $scope.addThread = function (size) {
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: '/templates/modals/run/addThread.html',
+            controller: 'ModalAddThreadCtrl',
+            size: size,
+            scope: $scope
+        });
+
+        modalInstance.result.then(function (data) {
+
         }, function () {
             //user dismissed
         });
@@ -72,7 +105,7 @@ angular.module('ARLearn').controller('RunController', function ($scope, $routePa
         });
 
         modalInstance.result.then(function (data) {
-            console.log(data);
+
         }, function () {
             //user dismissed
         });

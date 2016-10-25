@@ -5290,7 +5290,8 @@ button.close {
  }
  
  .mainmenu {
-	 text-align:center; 
+	 text-align:center;
+     top: 300px;
  }
  
   .mainmenu a{
@@ -5314,11 +5315,12 @@ button.close {
  
  #nav-button {
 	 width:35%;
-	 padding: 25px;
+	 padding: 40px 40px 40px 40px;
  }
  
+ 
   #nav-location {
-	 width:30%;
+	 width:15%;
  }
  
  #score_bg {
@@ -5327,7 +5329,7 @@ button.close {
 	background-repeat:no-repeat;
 	height: 90px;
 	margin-top: 15px;
-	width:35%;
+	width:50%;
 	text-align: right;
 	padding-right: 90px;
 	
@@ -5339,4 +5341,39 @@ button.close {
  }
  
 .btn-back {
+}
+
+.arcade-menu {
+	padding: 0px 30px 0 30px;
+}
+
+.arcade-list-item {
+	margin: 0 30px 20px 0;
+}
+
+.arcade-icon {
+	float: left;
+	padding-right:10px;
+}
+
+.arcade-title {
+	font-size:20px;
+	color:white;
+	padding-top:10px;
+}
+
+.arcade-title a{
+	text-decoration:none;
+}
+
+.bottomlines {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.toplines {
+  position: relative;
+  top: 0;
+  width: 100%;
 }

@@ -1,0 +1,46 @@
+
+
+<arl-header></arl-header>
+<arl-sidebar></arl-sidebar>
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            graph
+            <small>small</small>
+        </h1>
+        <div ng-bind-html="gameDescription"></div>
+    </section>
+
+
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">            Dependencies visualized
+                        </h3>
+                    </div>
+                        <div class="box-body graph">
+                            <vis-network ng-model="network_data" options="network_options" on-select="onNodeSelect" id="previewNetwork">
+                            </vis-network>
+                        </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+
+        </div>
+
+
+
+    </section>
+
+</div>

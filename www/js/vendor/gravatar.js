@@ -5,7 +5,7 @@
 angular.module('Gravatar', [])
     .provider('$gravatar', function() {
         var avatarSize = 80; // Default size
-        var avatarUrl = "http://www.gravatar.com/avatar/";
+        var avatarUrl = "https://www.gravatar.com/avatar/";
 
         this.setSize = function(size) {
             avatarSize = size;

@@ -1,0 +1,39 @@
+<arl-header></arl-header>
+<arl-sidebar></arl-sidebar>
+
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <div  class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-home"></i></a></li>
+
+                <li class="active"><i class="fa fa-book"></i> {{'arl.games.gamelibrary' | translate}}</li>
+            </ol>
+        </div>
+        <h1>
+            ARLearn
+            <small> {{'arl.games.gamelibrary' | translate}}</small>
+        </h1>
+
+    </section>
+
+
+
+
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6" ng-repeat="game in games | orderBy: '-rank'">
+
+                <!-- Gamecard -->
+                <arl-game-card title="game.data.title"
+                               id="game.data.gameId"
+                               description="game.data.description"
+                               icon="thumbnailUrl(game.gameId)"
+                ></arl-game-card>
+
+
+            </div>
+        </div>
+    </section>
+</div>

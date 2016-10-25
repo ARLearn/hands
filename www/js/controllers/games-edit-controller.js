@@ -6,8 +6,10 @@ angular.module('ARLearn').controller('GamesEditController', function($rootScope,
        if (newValue) {
            $scope.game.lat = $scope.map.center.latitude;
            $scope.game.lng = $scope.map.center.longitude;
+           $scope.game.config.mapAvailable = true;
 
        } else {
+           $scope.game.config.mapAvailable = false;
            delete $scope.game.lat;
            delete $scope.game.lng;
        }

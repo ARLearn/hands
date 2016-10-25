@@ -1,0 +1,144 @@
+<arl-header></arl-header>
+<arl-sidebar></arl-sidebar>
+<div class="content-wrapper fill" ng-hide="showNoAccess || show">
+    <section class="content ">
+        <div id="overlay">
+            <i class="fa fa-spinner fa-spin spin-big"></i>
+        </div>
+    </section>
+</div>
+
+<arl-no-access ng-show="showNoAccess"></arl-no-access>
+
+<div class="content-wrapper" ng-show="show">
+    <section class="content-header">
+        <a href="#/games/{{game.gameId}}/edit">
+            <button type="button" class="btn  btn-primary pull-right btn-space" ng-show="canEdit">{{'arl.games.edit' | translate}}</button>
+        </a>
+        <button type="button" class="btn  btn-primary pull-right btn-space" ng-click="newRun()">{{'arl.games.createrun' | translate}}</button>
+        <h1>
+            {{game.title}}
+            <small>{{rights}}</small>
+        </h1>
+        <div ng-bind-html="gameDescription"></div>
+    </section>
+
+    <section class="content-header">
+        <h1>
+            {{'arl.games.gameeditors' | translate}}
+        </h1>
+    </section>
+
+    <section class="content" style="overflow: visible !important;">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box " style="overvlow:visible;">
+                    <div class="box-header">
+
+
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;" ng-show="canEdit">
+                                <button type="button" class="btn btn-sm btn-default pull-right btn-space"
+                                        ng-click="addContributor()"><i class="fa fa-user-plus"></i> {{'arl.games.addcontributor' | translate}}
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+
+
+                    <div class="table-responsive foo">
+                        <table class="table table-drop table-striped">
+                            <thead>
+
+                            <tr>
+                                <th width="40px"></th>
+                                <th>{{'arl.games.name' | translate}}</th>
+                                <th class="hidden-xs">{{'arl.games.email' | translate}}</th>
+                                <th>{{'arl.games.type' | translate}}</th>
+                                <!--<th>Last modification</th>-->
+                                <th ng-show="canEdit" width="40px"></th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="access in access|filter:query">
+                                <td>
+                                    <div class="pull-left image">
+                                        <img width="28px" height="28px" ng-src="{{accounts[access.account].gravatar}}"
+                                             class="img-circle" alt="User Image" data-pin-nopin="true">
+                                    </div>
+                                </td>
+                                <td>{{accounts[access.account].name}}</td>
+                                <td class="hidden-xsxcode">{{accounts[access.account].email}}</td>
+                                <td><span class="label {{accessTypeLabel(access)}}">{{accessType(access)}}</span></td>
+                                <!--<td>{{access.timestamp| date:'medium'}}</td>-->
+                                <td ng-show="canEdit">
+                                    <div class="btn-group" style="overflow: visible !important;"
+                                         ng-show="(isOwner)||(canEdit && access.accessRights>=2)">
+                                        <button class="btn btn-sm btn-default dropdown-toggle" href="#"
+                                                data-toggle="dropdown">
+                                            <span class='fa fa-gear'></span> <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu stay-open pull-right" role="menu">
+                                            <li ng-show="isOwner && (access.accessRights!=1)" role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="changeContributionType(access.account, 1)">{{'arl.games.makeowner' | translate}}</a>
+                                            </li>
+                                            <li ng-show="canEdit && (access.accessRights!=2)" role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="changeContributionType(access.account, 2)">{{'arl.games.makeeditor' | translate}}</a>
+                                            </li>
+                                            <li ng-show="isOwner && (access.accessRights!=3)" role="presentation"><a
+                                                    role="menuitem"
+                                                    ng-click="changeContributionType(access.account, 3)">{{'arl.games.makeviewer' | translate}}</a>
+                                            </li>
+                                            <li ng-show="isOwner" role="presentation" class="divider"></li>
+                                            <li ng-show="(isOwner)||(canEdit && access.accessRights>=2)"
+                                                role="presentation"><a role="menuitem"
+                                                                       ng-click="removeContributor(access.account)">{{'arl.games.removeuser' | translate}}</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+    </section>
+
+    <section class="content-header">
+        <h1>
+            {{'arl.games.runsforthisgame' | translate}}
+
+
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6" ng-repeat="(runId, run) in runs">
+
+
+                <div class="small-box bg-white gamecard">
+                    <div class="inner">
+                        <h4>{{run.title}}</h4>
+
+                        <a href="#/run/{{run.runId}}/info">
+                            <button class="btn btn-block btn-primary btn-sm">{{'arl.games.runinfo' | translate}}</button>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>

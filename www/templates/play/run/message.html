@@ -1,0 +1,79 @@
+<!--<header class="main-header">-->
+<!--<nav class="navbar navbar-static-top navbarext">-->
+<!--<div class="container">-->
+
+<!--<div class="navbar-header">-->
+<!--<a href="#/play/games"> <i class="navbar-brand glyphicon glyphicon-menu-left"/></a>-->
+<!--&lt;!&ndash;<a href="../../index2.html" class="navbar-brand"><b>Admin</b>LTE</a>&ndash;&gt;-->
+<!--<a href="#" class="navbar-brand"><b>ARL</b>earn</a>-->
+<!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
+<!--data-target="#navbar-collapse">-->
+<!--<i class="fa fa-bars"></i>-->
+<!--</button>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash; /.navbar-custom-menu &ndash;&gt;-->
+<!--</div>-->
+<!--&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--</nav>-->
+<!--</header>-->
+
+<div class="content-wrapper" style="min-height: 840px;">
+    <!--<div class="container">-->
+    <!--&lt;!&ndash; Content Header (Page header) &ndash;&gt;-->
+
+    <!--<section id="main-header" class="main-header">-->
+    <!--<div class="col-xs-4" id="nav-button">-->
+    <!--<div id="btn-back">-->
+    <!--<a href="#"><img src="images/btn_back.png" width="40px" alt=""/></div>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-xs-4" id="nav-location">-->
+    <!--</div>-->
+    <!--<div class="col-xs-4" id="score_bg">-->
+    <!--<div id="score">-->
+    <!--<p>333</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</section>-->
+
+
+    <b class="test">GameId: {{item.gameId}} - {{runId}} - {{gameId}}</b>
+
+    <ANY ng-switch="item.type">
+        <ANY ng-switch-when="org.celstec.arlearn2.beans.generalItem.AudioObject">
+            <arl-audio item="item" runId="runId"></arl-audio>
+        </ANY>
+        <ANY ng-switch-when="org.celstec.arlearn2.beans.generalItem.NarratorItem">
+            <arl-narrator item="item" runId="runId"></arl-narrator>
+        </ANY>
+        <ANY ng-switch-when="org.celstec.arlearn2.beans.generalItem.SingleChoiceTest">
+            <arl-single-choice item="item" runId="runId"></arl-single-choice>
+        </ANY>
+        <ANY ng-switch-when="org.celstec.arlearn2.beans.generalItem.ScanTag">
+            <arl-scan-tag item="item" runId="runId"></arl-scan-tag>
+        </ANY>
+        <ANY ng-switch-when="org.celstec.arlearn2.beans.generalItem.ImageClickQuestion">
+            <arl-image-click-question item="item" runId="runId"></arl-image-click-question>
+        </ANY>
+        <ANY ng-switch-default>No item matches {{item.type}}</ANY>
+    </ANY>
+
+
+    <!--<section class="content-header">-->
+    <!--<h1>-->
+    <!--{{item.name}}-->
+    <!--</h1>-->
+    <!--{{item.type}}-->
+
+    <!--</section>-->
+
+    <!-- Main content -->
+
+    <!--</section>-->
+    <!-- /.content -->
+</div>
+<!-- /.container -->
+

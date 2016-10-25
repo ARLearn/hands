@@ -5,7 +5,9 @@ angular.module('ARLearn').controller("ModalGameMessageUploadCtrl", function ($sc
     if ($scope.key) {
         $scope.data.key =$scope.key;
     }
+    $scope.uploading = false;
     $scope.up = function () {
+        $scope.uploading = true;
         GeneralItemService.pictureUploadUrl($scope.gameId, $scope.itemId, $scope.data.key).$promise.then(
             function (data) {
                 $scope.uploadUrl = data.uploadUrl;

@@ -1,0 +1,24 @@
+<div>
+    <h1> Audio Object</h1>
+    <section class="content-header">
+        <h1>
+            {{item.name}}
+        </h1>
+    </section>
+
+    <div id="container">
+
+            <nav>
+                <button class="control play" ng-click="player.play()" ng-hide="player.playing">Play</button>
+                <button class="control pause" ng-click="player.pause()" ng-show="player.playing">Pause</button>
+            </nav>
+
+
+
+    </div>
+
+    <section class="content">
+        <div ng-bind-html="item.richText"></div>
+    </section>
+
+</div>

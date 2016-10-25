@@ -1,0 +1,76 @@
+<div>
+
+    <arl-header></arl-header>
+    <arl-sidebar></arl-sidebar>
+    <div class="content-wrapper">
+
+        <section class="content-header">
+
+            <h1>
+                Network console
+
+            </h1>
+
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="path" class="col-sm-2 control-label">Path</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="path" placeholder="/rest" ng-model="data.path">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6"  btn-block >
+                    <button type="button" class="btn btn-default" ng-click="get()" >GET</button>
+                    <button type="button" class="btn btn-primary" ng-click="post()">POST</button>
+                    <button type="button" class="btn btn-danger">DELETE</button>
+                </div>
+            </div>
+            <div class="row">
+                <br>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">To Server</h3>
+
+                        </div>
+
+                        <div class="box-body ">
+                            <div class="form-group">
+
+                            <textarea class="form-control" rows="50" placeholder="{}"
+                                      json-text style="margin-top: 0px; margin-bottom: 0px; height: 500px;" ng-model="data.to"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">From  Server</h3>
+
+                        </div>
+
+                        <div class="box-body ">
+                            <div class="form-group">
+
+                            <textarea class="form-control" rows="50" placeholder="{}"
+                                      json-text style="margin-top: 0px; margin-bottom: 0px; height: 500px;" ng-model="data.from"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<arl-header></arl-header>
+<arl-sidebar></arl-sidebar>
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <h1 class="dashboardtitle">Messages
+            <small>{{runTitle}}</small>
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr ng-repeat="visibility in visibilities">
+
+                                    <td><a href="#/run/item/{{runId}}/{{visibility.generalItemId}}">{{getItem(visibility.generalItemId).name}}</a></td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+        </div>
+    </section>
+
+</div>

@@ -23,6 +23,11 @@ angular.module('ARLearn')
                     method: 'DELETE',
                     isArray: false,
                     url: config.server + '/rest/generalItems/gameId/:gameId/generalItem/:itemId'
+                },
+                'deleteFilePath': {
+                    method: 'DELETE',
+                    isArray: false,
+                    url: config.server + '/rest/generalItems/gameId/:gameId/:path'
                 }
             });
         }

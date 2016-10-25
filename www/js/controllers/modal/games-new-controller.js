@@ -2,7 +2,7 @@ angular.module('ARLearn').controller("ModalNewGameCtrl", function ($scope, $uibM
     $scope.game = {
         "type": "org.celstec.arlearn2.beans.game.Game",
         "config": {"type": "org.celstec.arlearn2.beans.game.Config", "mapAvailable": false},
-        "title": "test",
+        "title": "",
         "description": ""
     };
     $scope.ok = function () {

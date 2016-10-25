@@ -13,7 +13,6 @@ angular.module('ARLearn').controller('LoginController', function ($scope, Sessio
 
             }
 
-            console.log(providers);
         }
     );
 

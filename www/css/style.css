@@ -5290,7 +5290,8 @@ button.close {
  }
  
  .mainmenu {
-	 text-align:center; 
+	 text-align:center;
+     top: 300px;
  }
  
   .mainmenu a{
@@ -5363,4 +5364,16 @@ button.close {
 
 .arcade-title a{
 	text-decoration:none;
+}
+
+.bottomlines {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.toplines {
+  position: relative;
+  top: 0;
+  width: 100%;
 }

@@ -1,0 +1,66 @@
+        <div class="row">
+            <div class="col-md-12">
+                <!-- DIRECT CHAT PRIMARY -->
+                <div class="box box-primary direct-chat direct-chat-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">ARLearn Chat</h3>
+
+
+                    </div>
+
+                    <div class="box-body"  >
+                        <!-- Conversations are loaded here -->
+                        <div class="direct-chat-messages"  style="height: 90%;">
+
+                            <div class="direct-chat-msg " ng-class="{'right': message.isMe}" ng-repeat="message in messages| orderBy:'date'">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name "
+                                          ng-class="{'pull-right': message.isMe}"
+                                          ng-class="{'pull-Left': !message.isMe}"
+                                    >{{message.sender}}</span>
+                                    <span class="direct-chat-timestamp"
+                                          ng-class="{'pull-right': !message.isMe}"
+                                          ng-class="{'pull-Left': message.isMe}">{{message.date | date:'dd MMM hh:mm a'}}</span>
+                                </div>
+                                <!-- /.direct-chat-info -->
+                                <img class="direct-chat-img" ng-src="{{message.gravatarUrl}}" alt="{{message.sender}} User Image"><!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    {{message.body}}
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+
+                            <div style="height: 30px;"></div>
+                            <!-- /.direct-chat-msg -->
+                        </div>
+                        <!--/.direct-chat-messages-->
+
+
+                    </div>
+
+                    <!-- /.box-body -->
+
+                    <!-- /.box-footer-->
+                </div>
+                <!--/.direct-chat -->
+            </div>
+            <!-- /.col -->
+
+
+        </div>
+
+
+
+        <div id="chatfooter" class="box-footer">
+            <form >
+                <div class="input-group">
+                    <input type="text" ng-model="newMessage" name="message" placeholder="Type Message ..." class="form-control">
+                      <span class="input-group-btn">
+                        <button  class="btn btn-primary btn-flat" ng-click="sendMessage(newMessage)">Send</button>
+                      </span>
+                </div>
+            </form>
+        </div>
+
+
+

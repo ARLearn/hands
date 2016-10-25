@@ -50,6 +50,17 @@ angular.module('ARLearn').service('RunService', function ($q, Run, CacheFactory)
             return deferred.promise;
         },
 
+        getRunsParticipateForGame: function (id) {
+            var deferred = $q.defer();
+            Run.getParticipateRunsForGame({id: id}).$promise.then(
+                function (data) {
+                    deferred.resolve(data);
+
+                }
+            );
+
+            return deferred.promise;
+        },
         getOwnedRunsForGame: function (gameId) {
             var service = this;
             gameToRuns[gameId] = gameToRuns[gameId] || {};
@@ -77,6 +88,7 @@ angular.module('ARLearn').service('RunService', function ($q, Run, CacheFactory)
                 function (data) {
                     gameToRuns[data.gameId] = gameToRuns[data.gameId] || {};
                     gameToRuns[data.gameId][data.runId] = data;
+                    dataCache.put(data.runId, data);
                     runs[data.runId] = data;
                 }
             );

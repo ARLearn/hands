@@ -1,0 +1,108 @@
+<header class="main-header">
+
+
+    <a href="index2.html" class="logo">
+        <span class="logo-mini"><b>ARL</b></span>
+        <span class="logo-lg"><b>ARL</b>earn</span>
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+
+
+        <div class="navbar-custom-menu">
+
+            <ul class="nav navbar-nav">
+
+
+                <!--<li  ng-show="runId && showPrevious()" class="active pull-left">-->
+                    <!--<a   href="/old/ResultDisplay.html?runId={{runId}}&version=1">-->
+                        <!--Click here for the old ARLearn Run display-->
+                    <!--</a>-->
+
+
+                <!--</li>-->
+
+                <!--<li ng-show="!runId && showPrevious()" class="active pull-left">-->
+                    <!--<a    href="/old/author.html">-->
+                        <!--Switch to previous version-->
+                    <!--</a>-->
+
+
+                <!--</li>-->
+
+
+                <li class="active pull-left">
+                    <a    href="mailto:stefaan.ternier@ou.nl?subject=Question about ARLearn">
+                        Contact ARLearn team
+                    </a>
+
+
+                </li>
+
+                <li class="active pull-left">
+                    <a    href="#/documentation">
+                        Documentation
+                    </a>
+
+
+                </li>
+
+                <li class="dropdown messages-menu">
+                    <a  class="dropdown-toggle" data-toggle="dropdown">
+                        <!--<i class="fa fa-flag-o"></i>-->
+                        <img ng-src="/images/{{getLang()}}.gif" width="16" height="11" alt=""/>
+                    </a>
+                    <ul class="dropdown-menu stay-open pull-right" role="menu" >
+
+                        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="setLanguage('en')"><img src="/images/en.gif" width="16" height="11" alt=""/> English</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="setLanguage('nl')"><img src="/images/nl.gif" width="16" height="11" alt=""/> Dutch</a></li>
+
+                    </ul>
+
+
+                </li>
+
+                <li class="dropdown user user-menu" ng-show="loggedIn()">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <img src="{{gravatarUrl}}" class="user-image" alt="User Image">
+                        <span class="hidden-xs">{{name}}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="{{gravatarUrl}}" class="img-circle" alt="User Image" data-pin-nopin="true">
+
+                            <p>
+                                {{name}}
+                                <small>{{accountRights}}</small>
+                            </p>
+                        </li>
+
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+
+                            <div class="pull-right">
+                                <a href="#" ng-click="signout()" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Control Sidebar Toggle Button -->
+                <!--<li>-->
+                    <!--<a  data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#/login" data-toggle="control-sidebar" ng-hide="loggedIn()"><button class="btn btn-primary">login</button></a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+
+    </nav>
+</header>

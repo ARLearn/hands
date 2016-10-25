@@ -4,7 +4,6 @@ angular.module('ARLearn').controller('FriendsAcceptInviteController', function (
     
     Contacts.getContactToken({token:$routeParams.invitationId}).$promise.then(
         function(data){
-            console.log(data);
             if (data.error) {
                 if (data.errorCode == 2) {
                     Session.storePathAfterLogin('friends/invitation/'+$routeParams.invitationId);

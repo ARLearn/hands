@@ -1,6 +1,7 @@
-angular.module('ARLearn').controller("ModalAddPlayerCtrl", function ($scope, $uibModalInstance, Contacts, PlayerService, AccountService) {
+angular.module('ARLearn').controller("ModalAddPlayerCtrl", function ($scope, $uibModalInstance, Account, Contacts, PlayerService, AccountService) {
 
     $scope.selection = {};
+    $scope.newP = {};
     $scope.selection.friends= [];
 
     $scope.newPlayerTransform = function (newTag) {
@@ -100,11 +101,24 @@ angular.module('ARLearn').controller("ModalAddPlayerCtrl", function ($scope, $ui
     loadContacts();
 
     $scope.ok = function () {
-        for (var i = 0; i< $scope.selection.friends.length; i++){
-            var friend = $scope.selection.friends[i];
-            PlayerService.addPlayer($scope.runId,friend.accountType,friend.localId);
+
+        if ($scope.newP.firstName || $scope.newP.lastName) {
+            console.log("new p "+$scope.newP.firstName);
+            Account.createAnonymousContact({email:$scope.newP.firstName, name: $scope.newP.lastName}).$promise.then(
+                function(accountData){
+                    PlayerService.addPlayer($scope.runId,accountData.accountType,accountData.localId);
+                    $uibModalInstance.close();
+                }
+            );
+        } else {
+            for (var i = 0; i< $scope.selection.friends.length; i++){
+                var friend = $scope.selection.friends[i];
+                PlayerService.addPlayer($scope.runId,friend.accountType,friend.localId);
+            }
+            $uibModalInstance.close();
         }
-        $uibModalInstance.close();
+
+
     };
 
     $scope.cancel = function () {

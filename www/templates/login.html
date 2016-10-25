@@ -1,0 +1,30 @@
+<div class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="#"><b>ARL</b>earn</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg">{{'arl.login.signmessage' | translate}}</p>
+
+
+            <div class="social-auth-links text-center">
+
+                <a ng-show="providerExists(1)" ng-href="{{fbUrl()}}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> {{'arl.login.signinfacebook' | translate}}</a>
+                <a ng-show="providerExists(2)" ng-href="{{googleUrl()}}" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google"></i> {{'arl.login.signingoogle' | translate}}</a>
+                <!--<a ng-show="providerExists(3)" href="#" class="btn btn-block btn-social btn-linkedin btn-flat"><i class="fa fa-linkedin"></i> {{'arl.login.signinlinkedin' | translate}}</a>-->
+                <!--<a ng-show="providerExists(4)" href="#" class="btn btn-block btn-social btn-twitter btn-flat"><i class="fa fa-twitter"></i> {{'arl.login.signintwitter' | translate}}</a>-->
+                <a ng-show="providerExists(5)" href="{{wespotUrl()}}" class="btn btn-block btn-social btn-flickr btn-flat"><i class="fa fa-google"></i> {{'arl.login.signinwespot' | translate}}</a>
+                <a ng-show="providerExists(6)" href="#" class="btn btn-block btn-social btn-tumblr btn-flat"><i class="fa fa-google"></i> {{'arl.login.signineco' | translate}}</a>
+            </div>
+
+            <!-- /.social-auth-links -->
+
+
+
+        </div>
+        <br>
+        <br>
+        <!-- /.login-box-body -->
+    </div>
+</div>

@@ -94,7 +94,9 @@ angular.module('ARLearn').service('ResponseService', function ($q, Response, Cac
                 var newGame = new Response(responseAsJson);
                 newGame.$save().then(
                     function (data) {
-
+                        responses[data.runId][data.responseId] =data;
+                        dataCache.put(data.responseId, data);
+                        updateImages(data);
                     }
                 );
                 //return deferred.promise;

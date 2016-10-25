@@ -1,0 +1,32 @@
+<div>
+<nav>
+    <button  ng-click="player.play()" >Audio</button>
+    <button  ng-click="takePicture()" >Picture</button>
+    <button  ng-click="player.play()" >Video</button>
+    <button  ng-click="collectText()" >Note</button>
+    <button  ng-click="player.play()" >Number</button>
+</nav>
+
+    <div class="box-body table-responsive no-padding" style="overflow: visible;">
+        <table class="table table-hover">
+            <tbody>
+            <tr>
+
+                <th>date</th>
+
+                <th>response</th>
+                <!--<th>Runs</th>-->
+            </tr>
+            <tr ng-repeat="response in responses" ng-click="clickResponse(response)">
+
+                <td>{{response.lastModificationDate| date:'medium'}}</td>
+                <!--<td>{{response.lastModificationDate}} test</td>-->
+
+                <td>{{getResponseString(response)}}</td>
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

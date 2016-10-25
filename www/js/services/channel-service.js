@@ -1,4 +1,4 @@
-angular.module('ARLearn').service('ChannelService', function ($http, $rootScope) {
+angular.module('ARLearn').service('ChannelService', function ($http, $rootScope, ChannelApi) {
 
     var SocketHandler = function () {
         this.messageCallback = function () {
@@ -37,7 +37,10 @@ angular.module('ARLearn').service('ChannelService', function ($http, $rootScope)
             context.channelSocket.onmessage = context.messageCallback;
         };
 
-        $http({url: "/rest/channelAPI/token", method: 'GET'}).success(this.socketCreationCallback);
+        //$http({url: "/rest/channelAPI/token", method: 'GET'}).success(this.socketCreationCallback);
+        ChannelApi.token().$promise.then(
+            this.socketCreationCallback
+        );
         //$.getJSON("/rest/channelAPI/token", this.socketCreationCallback);
     }
 

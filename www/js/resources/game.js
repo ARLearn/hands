@@ -24,7 +24,7 @@ angular.module('ARLearn')
                 'getGameById': {
                     method: 'GET',
                     isArray: false,
-                    url: config.server + '/rest/myGames/gameId/:id'
+                    url: config.server + '/rest/myGames/gameId/:id/checkAccess/true'
                 },
                 'create': {
                     method: 'POST',
@@ -45,6 +45,11 @@ angular.module('ARLearn')
                     method: 'GET',
                     isArray: false,
                     url: config.server + '/rest/myGames/gameContent/gameId/:gameId'
+                },
+                'getGamesParticipate': {
+                    method: 'GET',
+                    isArray: false,
+                    url: config.server + '/rest/myGames/participate?from=:from'
                 }
                 // removeAccess/gameId/4600356650614784/account/2:103657434009291559846:2147483647
             });

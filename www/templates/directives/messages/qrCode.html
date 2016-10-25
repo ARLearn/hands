@@ -1,0 +1,21 @@
+<div>
+    <section class="content-header">
+        <h1>
+            {{item.name}}
+        </h1>
+
+
+    </section>
+
+    <section class="content">
+        <div ng-bind-html="item.richText"></div>
+    </section>
+
+    <div  class="ng-scope">
+        <p class="ng-binding"><label>Data: {{data}}</label></p>
+        <p class="ng-binding"><label>Error:</label>{{error}}</p>
+        <qr-scanner width="400" height="300" ng-success="onSuccess(data)" ng-error="onError(error)" />
+    </div>
+
+
+</div>
