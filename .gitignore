@@ -36,3 +36,7 @@ platforms/android/.gradle/2.2.1/taskArtifacts/cache.properties.lock
 platforms/android/.gradle/2.2.1/taskArtifacts/fileHashes.bin
 
 *.xml~
+
+.DS_Store
+
+www/.DS_Store
