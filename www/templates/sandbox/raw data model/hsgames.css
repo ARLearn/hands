@@ -4,9 +4,9 @@
     --primaryColorDark: #cda70d;
     --primaryColorHighlight: #ffffff;
     --highlightColor: #ffffff;
-    --buttonColor: #3498db;
-    --buttonAlternativeColor: #14ddb3;
-    --backgroundColor: #dcd5cb;
+    --buttonColor: #fe6f19;
+    --buttonAlternativeColor: #3498db;
+    --backgroundColor: #3f3f3f;
     --backgroundColorLight: #f5ede2;
     --backgroundColorDark: #000000;
     --text: #95a5a6;
@@ -21,18 +21,32 @@
 Body {
 	font-family: Open Sans;
 	background-color: var(--backgroundColorDark);
+	margin: 0px;
 }
 	
 
 /*ARLearn HTML structure*/
 
-#header {}
+#header {
+	color: var(--textLight);
+	background-color: var(--primaryColor);
+	height: 60px;
+}
 
 .nav {}
 
 .title {}
 
-#content {}
+#content {
+	background: url(images/background_general.jpg) no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+ 	 -o-background-size: cover;
+ 	 background-size: cover;
+	height: 100%;
+	text-align:center;
+	padding-top: 16px;
+}
 
 .qnumber {
 	text-align: center;
@@ -55,7 +69,7 @@ Body {
 .timer {}
 
 .qimage {
-	padding: 0 5% 5% 5%;
+	padding: 0 0% 5% 0%;
 }
 
 #answers {
@@ -71,6 +85,49 @@ Body {
   	line-height: 1.5;
 }
 
+.submit{
+	 text-align:center;
+}
+
+.arcade-menu {
+	padding: 0px 30px 0 30px;
+}
+
+
+.arcade-game {
+	width: 100%;
+	display: block;
+	clear: left;
+	padding-bottom: 50px;
+}
+
+.arcade-icon {
+	float: left;
+	padding-right:10px;
+}
+
+.arcade-title {
+	font-size:20px;
+	color: var(--textLight);
+	padding-top:10px;
+	text-decoration: none;
+}
+
+.arcade-title a{
+	text-decoration:none;
+}
+
+.bottomlines {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.toplines {
+  position: relative;
+  top: 0;
+  width: 100%;
+}
 
 /*General UI elements*/
 
@@ -80,7 +137,7 @@ Body {
   font-size: 15px;
   font-weight: normal;
   line-height: 1.7;
-  border-radius: 4px;
+  border-radius: 5px;
   padding: 10px 15px;
   -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
   transition: border .25s linear, color .25s linear, background-color .25s linear;
@@ -102,8 +159,10 @@ Body {
 
 .btn-default {
   color: var(--textLight);
-  background-color: var(--primaryColor);
+  background-color: var(--backgroundColor);
+  border-radius: 0px;
 }
+
 .btn-default:hover,
 .btn-default.hover,
 .btn-default:focus,
@@ -111,33 +170,43 @@ Body {
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: var(--textLight);
-  background-color: var(--primaryColorLight);
-  border-color: var(--primaryColorLight);
+  background: var(--primaryColor);
+  border-color: var(--primaryColor);
 }
+
 .btn-default:active,
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
+  background: var(--buttonAlternativeColor);
+  border-color: var(--buttonAlternativeColor);
+}
+
+
+.btn-submit {
+  	color: var(--textLight);
+  	background-color: var(--buttonColor);
+	margin: 30px 30px 0 30px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.btn-submit:hover,
+.btn-submit.hover,
+.btn-submit:focus,
+.btn-submit:active,
+.btn-submit.active,
+.open .dropdown-toggle.btn-submit {
+  color: var(--textLight);
+  background-color: var(--primaryColorLight);
+  border-color: var(--primaryColorLight);
+}
+
+.btn-submit:active,
+.btn-submit.active,
+.open .dropdown-toggle.btn-submit {
   background: var(--primaryColorLight);
   border-color: var(--primaryColorLight);
 }
-.btn-default.disabled,
-.btn-default[disabled],
-fieldset[disabled] .btn-default,
-.btn-default.disabled:hover,
-.btn-default[disabled]:hover,
-fieldset[disabled] .btn-default:hover,
-.btn-default.disabled.hover,
-.btn-default[disabled].hover,
-fieldset[disabled] .btn-default.hover,
-.btn-default.disabled:focus,
-.btn-default[disabled]:focus,
-fieldset[disabled] .btn-default:focus,
-.btn-default.disabled:active,
-.btn-default[disabled]:active,
-fieldset[disabled] .btn-default:active,
-.btn-default.disabled.active,
-.btn-default[disabled].active,
-fieldset[disabled] .btn-default.active {
-  background-color: var(--primaryColor);
-  border-color: var(--primaryColor);
-}
+
+
+
