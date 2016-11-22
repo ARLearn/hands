@@ -37,6 +37,44 @@ Body {
 
 .title {}
 
+#main-header {
+	background-color: var(--primaryColor);
+	height: 90px
+}
+
+.nav-button {
+	width:90px;
+	float: left;
+ }
+ 
+ 
+.nav-location {
+	 width:15%;
+ }
+ 
+.score_bg {
+	float: right;
+	width: 175px;
+	height: 90px;
+	background-image: url('images/score.png');
+	background-repeat: no-repeat;
+}
+
+.score {
+	margin-left: 14px;
+	margin-top:10px;
+	color: black;
+	font-size: 22px;
+	font-weight: 600;
+}
+	
+ 
+.btn-back {
+	margin-left: 22px;
+	padding-top: 20px;	
+}
+
+
 #content {
 	background: url(images/background_general.jpg) no-repeat center center fixed; 
   	-webkit-background-size: cover;
@@ -66,6 +104,16 @@ Body {
 	padding-bottom: 12px;
 }
 
+.instruction {
+	font-size: 1.3em;
+  	font-weight: 500;
+  	line-height: 1.1;
+  	color: var(--textLight);
+	text-align: center;
+	padding-bottom: 12px;
+	padding-top: 30px;
+}
+
 .timer {}
 
 .qimage {
@@ -87,6 +135,45 @@ Body {
 
 .submit{
 	 text-align:center;
+}
+
+
+.toplines {
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+
+.top-score {
+	background: url(images/ic_cup.png);
+	background-repeat: no-repeat;
+	background-size: 24px;
+	background-position: 15px;
+	background-color:black;
+	color: var(--textLight);
+	border-radius: 25px;
+	margin: 0 100px 0 100px;
+	padding: 5px 0 5px 0;
+	
+}
+
+.game-title {
+	font-size: 1.3em;
+  	font-weight: 500;
+  	line-height: 1.1;
+  	color: var(--textLight);
+	text-align: center;
+	padding-bottom: 12px;
+	padding-top: 30px;
+}
+
+.game-abstract {
+	font-size: 0.9em;
+  	font-weight: 300;
+  	line-height: 1.4;
+  	color: var(--textLight);
+	text-align: center;
+	padding: 20px 30px 20px 30px;
 }
 
 .arcade-menu {
@@ -111,6 +198,7 @@ Body {
 	color: var(--textLight);
 	padding-top:10px;
 	text-decoration: none;
+	text-align: left;
 }
 
 .arcade-title a{
@@ -123,11 +211,6 @@ Body {
   width: 100%;
 }
 
-.toplines {
-  position: relative;
-  top: 0;
-  width: 100%;
-}
 
 /*General UI elements*/
 
@@ -207,6 +290,33 @@ Body {
   background: var(--primaryColorLight);
   border-color: var(--primaryColorLight);
 }
+
+.btn-start {
+  	color: var(--textDark);
+  	background-color: var(--primaryColor);
+	margin: 30px 30px 0 30px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.btn-start:hover,
+.btn-start.hover,
+.btn-start:focus,
+.btn-start:active,
+.btn-start.active,
+.open .dropdown-toggle.btn-start {
+  color: var(--textDark);
+  background-color: var(--primaryColorDark);
+  border-color: var(--primaryColorDark);
+}
+
+.btn-start:active,
+.btn-start.active,
+.open .dropdown-toggle.btn-start {
+  background: var(--primaryColorDark);
+  border-color: var(--primaryColorDark);
+}
+
 
 
 
