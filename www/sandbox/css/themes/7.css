@@ -1,0 +1,32 @@
+:root {
+    --primaryColor: #f1c40f;
+    --primaryColorLight: #ffde5a;
+    --primaryColorDark: #cda70d;
+    --primaryColorHighlight: #ffffff;
+    --highlightColor: #ffffff;
+    --buttonColor: #fe6f19;
+    --buttonAlternativeColor: #3498db;
+    --backgroundColor: #3f3f3f;
+    --backgroundColorLight: #f5ede2;
+    --backgroundColorDark: #000000;
+    --text: #95a5a6;
+    --textLight: #ffffff;
+    --textDark: #33485f;
+    --textInactive: #c5beb2;
+    --transparency: #99000000;
+}
+
+
+
+div #content {
+    background: url(../images/background_general.jpg) ;
+    background-size:cover;
+
+    bottom: 100px;
+    width: 100%;
+}
+
+div .score_bg {
+    visibility: visible;
+}
+

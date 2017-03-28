@@ -1,0 +1,318 @@
+
+/*General HTML elements*/
+
+Body {
+    font-family: Open Sans;
+    background-color: var(--backgroundColorDark);
+    margin: 0px;
+}
+
+
+/*ARLearn HTML structure*/
+
+#header {
+    color: var(--textLight);
+    background-color: var(--primaryColor);
+    height: 60px;
+}
+
+.nav {}
+
+.title {}
+
+#main-header {
+    background-color: var(--primaryColor);
+    height: 90px;
+    width: 100%;
+    position: fixed;
+}
+
+.nav-button {
+    width:90px;
+    float: left;
+}
+
+
+.nav-location {
+    width:15%;
+}
+
+.score_bg {
+    float: right;
+    width: 175px;
+    height: 90px;
+    background-image: url('images/score.png');
+    background-repeat: no-repeat;
+    visibility: hidden;
+}
+
+.score {
+    margin-left: 14px;
+    margin-top:10px;
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+
+.btn-back {
+    margin-left: 22px;
+    padding-top: 20px;
+}
+
+
+#content {
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 90px;
+    height: 100%;
+    text-align:center;
+    padding-top: 16px;
+    margin-top: 90px;
+}
+
+.qnumber {
+    text-align: center;
+    color: var(--textLight);
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.1;
+    padding-bottom: 6px;
+}
+
+.question {
+    font-size: 1.3em;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--textLight);
+    text-align: center;
+    padding-bottom: 12px;
+}
+
+.instruction {
+    font-size: 1.3em;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--textLight);
+    text-align: center;
+    padding-bottom: 12px;
+    padding-top: 30px;
+}
+
+.richtext {
+    font-size: 0.9em;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--textLight);
+    text-align: center;
+    padding: 20px 30px 20px 30px;
+}
+
+.timer {}
+
+.qimage {
+    padding: 0 0% 5% 0%;
+}
+
+#answers {
+    margin-top:20px;
+}
+
+.answer {
+    margin-bottom: 0.5em;
+    text-align: center;
+    color: var(--textLight);
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.submit{
+    text-align:center;
+}
+
+
+.toplines {
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+.top-score {
+    background: url(images/ic_cup.png);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: 15px;
+    background-color:black;
+    color: var(--textLight);
+    border-radius: 25px;
+    margin: 0 100px 0 100px;
+    padding: 5px 0 5px 0;
+
+}
+
+.game-title {
+    font-size: 1.3em;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--textLight);
+    text-align: center;
+    padding-bottom: 12px;
+    padding-top: 30px;
+}
+
+.game-abstract {
+    font-size: 0.9em;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--textLight);
+    text-align: center;
+    padding: 20px 30px 20px 30px;
+}
+
+
+.arcade-menu {
+    padding: 0px 30px 0 30px;
+}
+
+
+.arcade-game {
+    width: 100%;
+    display: block;
+    clear: left;
+    padding-bottom: 50px;
+}
+
+.arcade-icon {
+    float: left;
+    padding-right:10px;
+}
+
+.arcade-title {
+    font-size:20px;
+    color: var(--textLight);
+    padding-top:10px;
+    text-decoration: none;
+    text-align: left;
+}
+
+.arcade-title a{
+    text-decoration:none;
+}
+
+.bottomlines {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/*General UI elements*/
+
+
+.btn {
+    border: none;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.7;
+    border-radius: 5px;
+    padding: 10px 15px;
+    -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+    transition: border .25s linear, color .25s linear, background-color .25s linear;
+    -webkit-font-smoothing: subpixel-antialiased;
+    display: block;
+    text-decoration: none;
+}
+.btn:hover,
+.btn:focus {
+    outline: none;
+    color: var(--textLight);
+}
+.btn:active,
+.btn.active {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.btn-default {
+    color: var(--textLight);
+    background-color: var(--backgroundColor);
+    border-radius: 0px;
+}
+
+.btn-default:hover,
+.btn-default.hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+    color: var(--textLight);
+    background: var(--primaryColor);
+    border-color: var(--primaryColor);
+}
+
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+    background: var(--buttonAlternativeColor);
+    border-color: var(--buttonAlternativeColor);
+}
+
+
+.btn-submit {
+    color: var(--textLight);
+    background-color: var(--buttonColor);
+    margin: 30px 30px 0 30px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btn-submit:hover,
+.btn-submit.hover,
+.btn-submit:focus,
+.btn-submit:active,
+.btn-submit.active,
+.open .dropdown-toggle.btn-submit {
+    color: var(--textLight);
+    background-color: var(--primaryColorLight);
+    border-color: var(--primaryColorLight);
+}
+
+.btn-submit:active,
+.btn-submit.active,
+.open .dropdown-toggle.btn-submit {
+    background: var(--primaryColorLight);
+    border-color: var(--primaryColorLight);
+}
+
+.btn-start {
+    color: var(--textDark);
+    background-color: var(--primaryColor);
+    margin: 30px 30px 0 30px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btn-start:hover,
+.btn-start.hover,
+.btn-start:focus,
+.btn-start:active,
+.btn-start.active,
+.open .dropdown-toggle.btn-start {
+    color: var(--textDark);
+    background-color: var(--primaryColorDark);
+    border-color: var(--primaryColorDark);
+}
+
+.btn-start:active,
+.btn-start.active,
+.open .dropdown-toggle.btn-start {
+    background: var(--primaryColorDark);
+    border-color: var(--primaryColorDark);
+}
+
