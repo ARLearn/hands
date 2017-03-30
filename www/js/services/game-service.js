@@ -1,17 +1,32 @@
 angular.module('ARLearn').service('GameService', function ($q, $sce, Game, CacheFactory, AccountService) {
 
     CacheFactory('gamesCache', {
-        maxAge: 24 * 60 * 60 * 1000, // Items added to this cache expire after 1 day
+        maxAge: 24 * 60 * 60 * 1000*10, // Items added to this cache expire after 1 day
+        cacheFlushInterval: 60 * 60 * 1000, // This cache will clear itself every hour
+        deleteOnExpire: 'aggressive', // Items will be deleted from this cache when they expire
+        storageMode: 'localStorage' // This cache will use `localStorage`.
+
+    });
+    CacheFactory('participateGamesCache', {
+        maxAge: 24 * 60 * 60 * 1000*10, // Items added to this cache expire after 1 day
         cacheFlushInterval: 60 * 60 * 1000, // This cache will clear itself every hour
         deleteOnExpire: 'aggressive', // Items will be deleted from this cache when they expire
         storageMode: 'localStorage' // This cache will use `localStorage`.
 
     });
     var games = {};
+
     var dataCache = CacheFactory.get('gamesCache');
     var gameIds = dataCache.keys();
     for (i=0; i < gameIds.length; i++) {
         games[gameIds[i]] = dataCache.get(gameIds[i]);
+    };
+
+    var participateGames = {};
+    var participateDataCache = CacheFactory.get('participateGamesCache');
+    var pgameIds = participateDataCache.keys();
+    for (i=0; i < pgameIds.length; i++) {
+        participateGames[pgameIds[i]] = participateDataCache.get(pgameIds[i]);
     };
 
 
@@ -59,6 +74,9 @@ angular.module('ARLearn').service('GameService', function ($q, $sce, Game, Cache
         },
         getGames: function () {
             return games;
+        },
+        getParticipateGames: function () {
+            return participateGames;
         },
         getGameById: function (id) {
             var deferred = $q.defer();
@@ -156,18 +174,22 @@ angular.module('ARLearn').service('GameService', function ($q, $sce, Game, Cache
             );
             return deferred.promise;
         },
-        getGamesParticipate: function(){
+        loadGamesParticipate: function(){
+            var deferred = $q.defer();
             Game.getGamesParticipate({from:gamesParticipateLastSyncDate}).$promise.then(
                 function (data) {
-                    console.log(data.games);
-                    gamesParticipatelist.push.apply(gamesParticipatelist, data.games)
-
-                    //gamesParticipatelist.push(...data.games);
-                    console.log(gamesParticipatelist);
+                    for (i=0; i <  data.games.length; i++) {
+                        participateGames[data.games[i].gameId] = data.games[i];
+                        participateDataCache.put(data.games[i].gameId, data.games[i]);
+                    };
+                    //gamesParticipatelist.push.apply(gamesParticipatelist, data.games)
                     gamesParticipateLastSyncDate = data.serverTime;
+                    // gamesParticipateLastSyncDate = 0;
+                    deferred.resolve(data);
                 }
             );
-            return gamesParticipatelist;
+            return deferred.promise;
+
         }
 
     }

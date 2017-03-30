@@ -1,0 +1,27 @@
+<div id="main-header">
+    <div class="nav-button">
+        <div class="btn-back"><a href="#"><img src="css/images/btn_back.png" width="50px"  alt=""/></a></div>
+    </div>
+
+    <div class="nav-location"></div>
+
+    <div class="score_bg">
+        <div class="score">
+            <p>333</p>
+        </div>
+    </div>
+</div>
+
+<div id="game-instruction">
+
+
+    <div id="content">
+        <div class="game-title">{{item.name}}</div>
+        <div class="game-abstract" ng-bind-html="richText"></div>
+        <div class="top-score">25 points</div>
+        <div class="submit">
+            <a href="#/play/run/{{runId}}/messages" class="answer btn btn-start">START GAME</a>
+        </div>
+    </div>
+
+</div>

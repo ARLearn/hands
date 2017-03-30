@@ -1,0 +1,26 @@
+<div id="multiplechoice" >
+
+    <div id="header">
+        <div class="nav"></div>
+        <div class="title"></div>
+
+    </div>
+
+    <div id="content">
+
+        <div class="qnumber">1 van 5</div>
+        <div class="question">{{item.name}} </div>
+        <div class="timer"></div>
+        <div class="richtext" ng-bind-html="richText"></div>
+        <div class="answers">
+            <a class="answer btn btn-default"
+               ng-click="select(answer.id)"
+               ng-class="{selected: answerSelected(answer)}"
+               ng-repeat="answer in item.answers">{{answer.answer}} {{ answerSelected(answer)}}</a>
+        </div>
+        <div class="submit">
+            <a class="answer btn btn-submit" ng-click="submit()">SUBMIT</a>
+        </div>
+    </div>
+
+</div>

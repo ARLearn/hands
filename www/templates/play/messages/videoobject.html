@@ -1,0 +1,20 @@
+<div id="videoObject" >
+
+    <div id="header">
+        <div class="nav"></div>
+        <div class="title"></div>
+
+    </div>
+
+    <div id="content">
+
+        <div class="qnumber">1 van 5</div>
+        <div class="question">{{item.name}} </div>
+        <video width="320" height="240" controls>
+            <source src="{{item.video}}" type="video/mp4">
+        </video>
+        <div class="timer"></div>
+        <div class="richtext" ng-bind-html="richText"></div>
+    </div>
+
+</div>

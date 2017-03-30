@@ -1,72 +1,39 @@
-<arl-header></arl-header>
-<!--<arl-sidebar></arl-sidebar>-->
-<!--<div class="content-wrapper">-->
-
-<!--<section class="content-header">-->
-<!--<h1 class="dashboardtitle">Hier komt een titel</h1>-->
-<!--</section>-->
-
-<!--test-->
+<div id="playhome">
 
 
-<!--</div>-->
-
-<div class="container-fluid ARLback">
-
-    <div class="row">
-        <div class="col-xs-6">&nbsp;</div>
-    </div>
-
-    <div class="row">
+    <div ng-show="isAuthenticated()" class ="mygames">
         <a href="#/play/games">
-            <div class="col-xs-6"">
-                <div class="square myGamesSquare">
-                    <div class="contentmainscreen">
-                        <img width="100%" src="/images/play/ic_mygames.png"/>
-                    </div>
-                    <div class="contentTitle">
-                        My Games
-                    </div>
-                </div>
-
-            </div>
+            <div class="icon"></div>
+            <div class="title">My Games*</div>
         </a>
-        <div class="col-xs-6">
-            <div class="square librarySquare">
-                <div class="contentmainscreen">
-                    <img width="100%" src="/images/play/ic_store.png"/>
-                </div>
-                <div class="contentTitle">
-                    Library
-                </div>
-
-            </div>
-        </div>
     </div>
 
-
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="square scanSquare">
-                <div class="contentmainscreen">
-                    <img width="100%" src="/images/play/ic_qrscan.png"/>
-                </div>
-                <div class="contentTitle">
-                    Scan
-                </div>
-            </div>
-
-        </div>
-        <div class="col-xs-6">
-            <div class="square settingsSquare">
-                <div class="contentmainscreen">
-                    <img width="100%" src="/images/play/ic_settings_mainmenu.png"/>
-                </div>
-                <div class="contentTitle">
-                    Settings
-                </div>
-
-            </div>
-        </div>
+    <div ng-hide="isAuthenticated()" class ="mygames">
+        <a href="#/login">
+            <div class="icon"></div>
+            <div class="title">My Games</div>
+        </a>
     </div>
+
+    <div class ="library">
+        <a href="#/play/library">
+            <div class="icon"></div>
+            <div class="title">Library</div>
+        </a>
+    </div>
+
+    <div class ="scan">
+        <a href="#/play/scan">
+            <div class="icon"></div>
+            <div class="title">Scan</div>
+        </a>
+    </div>
+
+    <div class ="settings">
+        <a href="#/play/settings">
+            <div class="icon"></div>
+            <div class="title">Settings</div>
+        </a>
+    </div>
+
 </div>

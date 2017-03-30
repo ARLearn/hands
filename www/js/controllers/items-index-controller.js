@@ -1,6 +1,7 @@
 angular.module('ARLearn').controller('RunItemsController', function ($scope, $routeParams, RunService, GeneralItemService) {
 
     $scope.runId = $routeParams.runId;
+    $scope.visibleItems = GeneralItemService.getVisibleItems($routeParams.runId);
     RunService.getRunById($routeParams.runId).then(function (data) {
         $scope.runTitle = data.title;
         $scope.runId = data.runId;
@@ -21,18 +22,19 @@ angular.module('ARLearn').controller('RunItemsController', function ($scope, $ro
 });
 
 
-angular.module('ARLearn').controller('RunItemController', function ($scope, $routeParams, $sce, GeneralItemService, $compile, ActionService) {
+angular.module('ARLearn').controller('RunItemController', function ($scope, $routeParams, $sce, GeneralItemService, $compile, ActionService, GameService) {
 
     $scope.runId = $routeParams.runId;
-    $scope.changeTheme(1);
+
     GeneralItemService.getItemById($routeParams.gameId, $routeParams.itemId).then(function(data){
         $scope.item = data;
         ActionService.createAction($scope.runId, "read", $scope.item.id, $scope.item.type);
         $scope.richText = $sce.trustAsHtml($scope.item.richText);
-
     });
 
-
+    GameService.getGameById($routeParams.gameId).then(function(game){
+        $scope.changeTheme(game.theme);
+    });
 
 
     //$("#head").append( $compile("<link rel='stylesheet' href='/css/themes/1.css' />")($scope) );

@@ -1,0 +1,17 @@
+<div id="game-instruction" >
+
+    <div id="header">
+        <div class="nav"></div>
+        <div class="title">{{item.name}}</div>
+
+    </div>
+    <div id="content">
+        <div class="game-title">{{item.name}}</div>
+        <audio controls>
+            <source src="{{item.audio}}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="game-abstract" ng-bind-html="richText"></div>
+    </div>
+
+</div>

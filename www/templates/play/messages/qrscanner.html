@@ -1,0 +1,28 @@
+<div id="narratoritem" >
+
+    <div id="header">
+        <div class="nav"></div>
+        <div class="title"></div>
+
+    </div>
+
+    <div id="content">
+
+        <div class="qnumber">1 van 5</div>
+        <div class="question">{{item.name}} </div>
+        <div class="timer"></div>
+
+        <!--<bc-qr-reader active="cameraRequested"-->
+                      <!--on-result="processURLfromQR"-->
+                      <!--on-error="onError" camera-status="cameraIsOn"-->
+                      <!--width="80%" >-->
+        <qr-scanner width="400" height="300" ng-success="onSuccess(data)" ng-error="onError(error)" />
+        </bc-qr-reader>
+
+        <p ng-show="url">Action detected!</p>
+        <p><b>{{ action }}</b></p>
+
+        <div class="richtext" ng-bind-html="richText"></div>
+    </div>
+
+</div>

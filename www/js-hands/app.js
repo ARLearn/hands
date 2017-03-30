@@ -1,6 +1,20 @@
 angular.module('ARLearn', ['ngRoute',  'ngResource',
     'angular-cache', 'pascalprecht.translate', 'ngSanitize',
- 'Gravatar']);
+ 'Gravatar','qrScanner'])
+    .filter('orderByField', function() {
+        return function(items, field, reverse) {
+            var filtered = [];
+            angular.forEach(items, function(item) {
+                filtered.push(item);
+            });
+            filtered.sort(function (a, b) {
+                return (a[field] > b[field] ? 1 : -1);
+            });
+            if(reverse) filtered.reverse();
+            return filtered;
+        };
+    })
+;
 //    .config(function ($translateProvider) {
 //
 //
@@ -20,7 +34,7 @@ angular.module('ARLearn', ['ngRoute',  'ngResource',
 //})
 
 angular.module('ARLearn').controller('headController', function($scope) {
-    $scope.styleIndex = 0
+    $scope.styleIndex = 7;
     $scope.changeTheme = function(index) {
         $scope.styleIndex=index;
 

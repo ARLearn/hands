@@ -12,6 +12,7 @@
 
                 <a ng-show="providerExists(1)" ng-href="{{fbUrl()}}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> {{'arl.login.signinfacebook' | translate}}</a>
                 <a ng-show="providerExists(2)" ng-href="{{googleUrl()}}" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google"></i> {{'arl.login.signingoogle' | translate}}</a>
+                <a ng-show="cordova" ng-click="cordovaGoogleLogin()" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google"></i> cordova google</a>
                 <!--<a ng-show="providerExists(3)" href="#" class="btn btn-block btn-social btn-linkedin btn-flat"><i class="fa fa-linkedin"></i> {{'arl.login.signinlinkedin' | translate}}</a>-->
                 <!--<a ng-show="providerExists(4)" href="#" class="btn btn-block btn-social btn-twitter btn-flat"><i class="fa fa-twitter"></i> {{'arl.login.signintwitter' | translate}}</a>-->
                 <a ng-show="providerExists(5)" href="{{wespotUrl()}}" class="btn btn-block btn-social btn-flickr btn-flat"><i class="fa fa-google"></i> {{'arl.login.signinwespot' | translate}}</a>

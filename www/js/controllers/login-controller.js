@@ -1,4 +1,4 @@
-angular.module('ARLearn').controller('LoginController', function ($scope, Session, Oauth) {
+angular.module('ARLearn').controller('LoginController', function ($scope, Session, Oauth, $window) {
     $scope.oauth = Session.getOauthType;
     $scope.accessToken = Session.getAccessToken;
     $scope.isLoggedIn = function () {
@@ -40,6 +40,35 @@ angular.module('ARLearn').controller('LoginController', function ($scope, Sessio
     }
 
 
+    $scope.cordovaGoogleLogin = function(){
+        window.plugins.googleplus.login(
+            {
+                'scopes': 'profile email',
+                'webClientId': '280437851834-sfs805uv4mtv1dbc5ov739qrg7lukgbl.apps.googleusercontent.com',
+                'offline': true,
+            },
+            function (obj) {
+                $scope.feedback = obj.serverAuthCode;
+                console.log(obj);
+                console.log(JSON.stringify(obj));
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://streetlearn.appspot.com/rest/account/verifyToken');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function () {
+                    console.log('Signed in as: ' + xhr.responseText);
+                    var token = JSON.parse(xhr.responseText);
+                    console.log('Token '+token.accessToken);
+                    Session.setAccessToken(token.accessToken);
+                    $window.history.back();
+                };
+                xhr.send('idtoken=' + obj.serverAuthCode);
+
+            },
+            function (msg) {
+                $scope.feedback = msg;
+            }
+        );
+    }
     //$http({method:'GET',url: config.server+'/rest/oauth/getOauthInfo/'}).success(function(data){
     //
     //    for (var i in data.oauthInfoList) {
@@ -52,6 +81,40 @@ angular.module('ARLearn').controller('LoginController', function ($scope, Sessio
     //        return (providers['prov'+providerId]!= null);
     //    }
     //} );
+
+});
+
+angular.module('ARLearn').controller('LoginGooglePlusController', function ($scope, Session, Oauth, $window) {
+    $scope.login = function(){
+
+        window.plugins.googleplus.login(
+            {
+                'scopes': 'profile email',
+                'webClientId': '280437851834-sfs805uv4mtv1dbc5ov739qrg7lukgbl.apps.googleusercontent.com',
+                'offline': true,
+            },
+            function (obj) {
+                $scope.feedback = obj.serverAuthCode;
+                console.log(obj);
+                console.log(JSON.stringify(obj));
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://streetlearn.appspot.com/rest/account/verifyToken');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function () {
+                    console.log('Signed in as: ' + xhr.responseText);
+                    var token = JSON.parse(xhr.responseText);
+                    console.log('Token '+token.accessToken);
+                    Session.setAccessToken(token.accessToken);
+                    $window.history.back();
+                };
+                xhr.send('idtoken=' + obj.serverAuthCode);
+
+            },
+            function (msg) {
+                $scope.feedback = msg;
+            }
+        );
+    }
 
 });
 

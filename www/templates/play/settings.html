@@ -1,0 +1,20 @@
+<arl-play-header></arl-play-header>
+<div id="settings">
+
+
+    <div  class="richtext" ng-hide="loggedIn()" ng-click="login()">
+        <a href="#/login" >
+            <div class="icon"></div>
+            <div class="title">Aanmelden</div>
+        </a>
+    </div>
+
+
+    <div class="richtext" ng-show="loggedIn()"  ng-click="logout()" >
+
+            <div class="icon"></div>
+            <div class="title">Afmelden</div>
+
+    </div>
+
+</div>

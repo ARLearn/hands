@@ -9,6 +9,14 @@ angular.module('ARLearn').service('GeneralItemService', function ($q, Item,ItemV
 
     });
 
+    CacheFactory('visibleItemsCache', {
+        maxAge: 24 * 60 * 60 * 1000*10, // Items added to this cache expire after 1 day
+        cacheFlushInterval: 60 * 60 * 1000, // This cache will clear itself every hour
+        deleteOnExpire: 'aggressive', // Items will be deleted from this cache when they expire
+        storageMode: 'localStorage' // This cache will use `localStorage`.
+
+    });
+
     var generalItems = {};
     var dataCache = CacheFactory.get('itemsCache');
     var itemIds = dataCache.keys();
@@ -18,6 +26,13 @@ angular.module('ARLearn').service('GeneralItemService', function ($q, Item,ItemV
             generalItems[generalItem.gameId] = {};
         }
         generalItems[generalItem.gameId][generalItem.id] = generalItem;
+    };
+
+    var visibleItems = {};
+    var visibleItemsdataCache = CacheFactory.get('visibleItemsCache');
+    var runIds = visibleItemsdataCache.keys();
+    for (i=0; i < runIds.length; i++) {
+        visibleItems[runIds[i]] = visibleItemsdataCache.get(runIds[i]);
     };
 
     return {
@@ -123,11 +138,22 @@ angular.module('ARLearn').service('GeneralItemService', function ($q, Item,ItemV
             ItemVisibility.getVisibilityStatements({runId:runId}).$promise.then(
                 function (data) {
                     deferred.resolve(data);
+
+                    visibleItems[runId] = visibleItems[runId] || {};
+                    for (i=0; i < data.generalItemsVisibility.length; i++) {
+                        //visibleItemsdataCache[runId][data.generalItems[i].id] = visibleItemsdataCache[runId][data.generalItems[i].id]|| {};
+                        visibleItems[runId][data.generalItemsVisibility[i].generalItemId] = data.generalItemsVisibility[i];
+                        //dataCache.put(data.generalItems[i].id, data.generalItems[i]);
+
+                    }
+                    visibleItemsdataCache.put(runId, visibleItems[runId]);
                 }
             );
             return deferred.promise;
         },
-        
+        getVisibleItems: function(runId){
+          return visibleItems[runId];
+        },
         pictureUploadUrl: function(gameId, itemId, key) {
             return Item.pictureUploadUrl({gameId:gameId, itemId:itemId, key:key});
         },

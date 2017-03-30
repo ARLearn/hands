@@ -91,7 +91,8 @@ angular.module('ARLearn').service('ResponseService', function ($q, Response, Cac
             return images[runId];
         },
         createResponse: function(responseAsJson) {
-                var newGame = new Response(responseAsJson);
+            responses[responseAsJson.runId] = responses[responseAsJson.runId] || {};
+            var newGame = new Response(responseAsJson);
                 newGame.$save().then(
                     function (data) {
                         responses[data.runId][data.responseId] =data;

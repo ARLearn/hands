@@ -1,0 +1,23 @@
+<div id="multiplechoice">
+
+    <div id="header">
+        <div class="nav"></div>
+        <div class="title"></div>
+
+    </div>
+
+    <div id="content">
+        <div class="qnumber">1 van 5 </div>
+
+        <div class="question" ng-bind-html="richText"></div>
+        <div class="timer"></div>
+        <div class="qimage"><img src="images/1.png" width="100%" alt=""/></div>
+        <div class="answers" ng-repeat="answer in item.answers">
+            <div  class="answer btn btn-default">{{answer.answer}}</div>
+
+        </div>
+
+
+    </div>
+
+</div>

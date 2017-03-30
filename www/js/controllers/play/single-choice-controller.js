@@ -1,5 +1,5 @@
 
-angular.module('ARLearn').controller('SingleChoiceController', function ($scope, ActionService,ResponseService, $window) {
+angular.module('ARLearn').controller('SingleChoiceController', function ($scope, ActionService,ResponseService, $window, GameService) {
 
 
     $scope.select = function(id) {
@@ -16,5 +16,7 @@ angular.module('ARLearn').controller('SingleChoiceController', function ($scope,
         });
         $window.history.back();
     }
+
+
 
 });

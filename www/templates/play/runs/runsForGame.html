@@ -1,54 +1,66 @@
-<header class="main-header">
-    <nav class="navbar navbar-static-top">
-        <div class="container">
-            <!--<div class="navbar-header pull-left">-->
-            <!--<a href="#/play"> <i class="navbar-brand glyphicon glyphicon-menu-left"/></a>-->
 
-            <!--<a href="#" class="navbar-brand"><b>ARL</b>earn</a>-->
+    <arl-play-header></arl-play-header>
+    <div id="content">
 
-            <!--</div>-->
-            <div class="navbar-header">
-                <a href="#/play/games"> <i class="navbar-brand glyphicon glyphicon-menu-left"/></a>
-                <!--<a href="../../index2.html" class="navbar-brand"><b>Admin</b>LTE</a>-->
-                <a href="#" class="navbar-brand"><b>ARL</b>earn</a>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-
-
-            <!-- /.navbar-custom-menu -->
+        <div class="gamerow" ng-repeat="run in runs">
+            <div class="icon"> <img ng-src="https://streetlearn.appspot.com/game/{{run.gameId}}/gameThumbnail" width="50px" height="50px" alt="Description" />  </div>
+            <div class="runTitle"><a href="#/play/run/{{run.runId}}/messages">{{run.title}}</a></div>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-</header>
 
-<div class="content-wrapper" style="min-height: 840px;">
-    <div class="container">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                runs
-            </h1>
-
-        </section>
-
-        <!-- Main content -->
-        <section class="content">
-            <div class="white-bg table-responsive no-padding no-border">
-                <table class="table table-hover">
-                    <tr ng-repeat="run in runs">
-                        <td><img ng-src="https://streetlearn.appspot.com/game/{{game.gameId}}/gameThumbnail" width="50px" height="50px" alt="Description" /></td>
-                        <td><a href="#/play/run/{{run.runId}}/messages">{{run.title}}</a></td>
-                        <td><i class="glyphicon glyphicon-menu-right"></td>
-                    </tr>
-
-
-                </table>
-            </div>
-
-        </section>
-        <!-- /.content -->
     </div>
-    <!-- /.container -->
-</div>
+
+
+<!--<header class="main-header">-->
+    <!--<nav class="navbar navbar-static-top">-->
+        <!--<div class="container">-->
+            <!--&lt;!&ndash;<div class="navbar-header pull-left">&ndash;&gt;-->
+            <!--&lt;!&ndash;<a href="#/play"> <i class="navbar-brand glyphicon glyphicon-menu-left"/></a>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<a href="#" class="navbar-brand"><b>ARL</b>earn</a>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<div class="navbar-header">-->
+                <!--<a href="#/play/games"> <i class="navbar-brand glyphicon glyphicon-menu-left"/></a>-->
+                <!--&lt;!&ndash;<a href="../../index2.html" class="navbar-brand"><b>Admin</b>LTE</a>&ndash;&gt;-->
+                <!--<a href="#" class="navbar-brand"><b>ARL</b>earn</a>-->
+                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">-->
+                    <!--<i class="fa fa-bars"></i>-->
+                <!--</button>-->
+            <!--</div>-->
+
+
+            <!--&lt;!&ndash; /.navbar-custom-menu &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+    <!--</nav>-->
+<!--</header>-->
+
+<!--<div class="content-wrapper" style="min-height: 840px;">-->
+    <!--<div class="container">-->
+        <!--&lt;!&ndash; Content Header (Page header) &ndash;&gt;-->
+        <!--<section class="content-header">-->
+            <!--<h1>-->
+                <!--runs-->
+            <!--</h1>-->
+
+        <!--</section>-->
+
+        <!--&lt;!&ndash; Main content &ndash;&gt;-->
+        <!--<section class="content">-->
+            <!--<div class="white-bg table-responsive no-padding no-border">-->
+                <!--<table class="table table-hover">-->
+                    <!--<tr ng-repeat="run in runs">-->
+                        <!--<td><img ng-src="https://streetlearn.appspot.com/game/{{game.gameId}}/gameThumbnail" width="50px" height="50px" alt="Description" /></td>-->
+                        <!--<td><a href="#/play/run/{{run.runId}}/messages">{{run.title}}</a></td>-->
+                        <!--<td><i class="glyphicon glyphicon-menu-right"></td>-->
+                    <!--</tr>-->
+
+
+                <!--</table>-->
+            <!--</div>-->
+
+        <!--</section>-->
+        <!--&lt;!&ndash; /.content &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.container &ndash;&gt;-->
+<!--</div>-->

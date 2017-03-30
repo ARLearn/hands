@@ -1,0 +1,17 @@
+:root {
+    --primaryColor: #d24b27;
+    --primaryColorLight: #ff9d6f;
+    --primaryColorDark: #940500;
+    --primaryColorHighlight: #ffffff;
+    --highlightColor: #ffffff;
+    --buttonColor: #114c9a;
+    --buttonAlternativeColor: #114c9a;
+    --backgroundColor: #ff9d6f;
+    --backgroundColorLight: #ffcbb2;
+    --backgroundColorDark: #940500;
+    --text: #fff2ec;
+    --textLight: #ffffff;
+    --textDark: #491700;
+    --textInactive: #ffb795;
+    --transparency: #99000000;
+}

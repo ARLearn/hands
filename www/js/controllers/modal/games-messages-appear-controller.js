@@ -23,15 +23,15 @@ angular.module('ARLearn').controller("ModalMessagesAppearController", function (
             $scope.actions.push({"action":"complete", "name":"completes listening to the audio fragment in"})
         }  else if (item.type == 'org.celstec.arlearn2.beans.generalItem.MultipleChoiceTest') {
             $scope.actions = coreActions.slice();
-            $scope.actions.push({"action":"correct", "name":"gives a correct answer to"});
-            $scope.actions.push({"action":"wrong", "name":"gives a wrong answer to"});
+            $scope.actions.push({"action":"answer_correct", "name":"gives a correct answer to"});
+            $scope.actions.push({"action":"answer_wrong", "name":"gives a wrong answer to"});
             for (answerIndex in item.answers) {
                 $scope.actions.push({"action":"answer_"+item.answers[answerIndex].id, "name":"answers '"+item.answers[answerIndex].answer+"' to"});
             }
         }  else if (item.type == 'org.celstec.arlearn2.beans.generalItem.SingleChoiceTest') {
             $scope.actions = coreActions.slice();
-            $scope.actions.push({"action":"correct", "name":"gives a correct answer to"});
-            $scope.actions.push({"action":"wrong", "name":"gives a wrong answer to"});
+            $scope.actions.push({"action":"answer_correct", "name":"gives a correct answer to"});
+            $scope.actions.push({"action":"answer_wrong", "name":"gives a wrong answer to"});
             for (answerIndex in item.answers) {
                 $scope.actions.push({"action":"answer_"+item.answers[answerIndex].id, "name":"answers '"+item.answers[answerIndex].answer+"' to"});
             }

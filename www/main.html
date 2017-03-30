@@ -11,13 +11,18 @@
 
     <title>Health and Safety Games</title>
     <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <!--<script type="text/javascript">-->
+        <!--app.initialize();-->
+    <!--</script>-->
     <!-- Bootstrap Core CSS + other Standard CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
 
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/themes/{{styleIndex}}.css">
+    <!--<link rel="stylesheet" href="css/play.css">-->
+    <link rel="stylesheet" href="css/play-7.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,6 +39,7 @@
 
 <body  id="page-top" >
 <div ng-view>
+
 
 </div>
 
@@ -57,8 +63,10 @@
     <!-- Scrolling Nav JavaScript -->
     <script src="./js/vendor/jquery.easing.min.js"></script>
     <script src="./js/vendor/scrolling-nav.js"></script>
-
-
+<!--<script src="./js/vendor/bc-qr-reader.js"></script>-->
+<!--<script src="./js/vendor/webcam.js"></script>-->
+<script src="./js/vendor/jsqrcode-combined.min.js"></script>
+<script src="./js/vendor/qr-scanner.js"></script>
      <script src="./js-hands/app.js"></script>
      <script src="./js-hands/routes.js"></script>
 
@@ -92,6 +100,8 @@
 <script src="./js/resources/action.js"></script>
 
 <!-- Directives -->
+<script src="./js-play/directives/arl-play-header.js"></script>
+
 <script src="./js-hands/directives/hands-header.js"></script>
 <script src="./js-hands/directives/hands-lines.js"></script>
 
@@ -105,14 +115,18 @@
 
 
 <script src="./js/controllers/items-index-controller.js"></script>
-
+<script src="./js/controllers/login-controller.js"></script>
 
 <script src="./js/controllers/play-controller.js"></script>
+<script src="./js/controllers/oauth-controller.js"></script>
 <script src="./js/controllers/play/single-choice-controller.js"></script>
 <script src="./js/controllers/play/play-audio-controller.js"></script>
 <script src="./js/controllers/play/datacollection-controller.js"></script>
 <script src="./js/controllers/play/scan-tag-controller.js"></script>
 <script src="./js/controllers/play/image-click-question-controller.js"></script>
+<script src="./js/controllers/play/general-item-controller.js"></script>
+
+
 </body>
 
 </html>

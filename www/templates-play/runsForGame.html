@@ -1,0 +1,11 @@
+<arl-play-header></arl-play-header>
+
+<div id="content">
+    <section id="arcade-menu" class="arcade-menu">
+        <a href="#/play/run/{{run.runId}}/messages" class="arcade-game"  ng-repeat="run in runs">
+            <div class="arcade-icon"><img ng-src="https://streetlearn.appspot.com/game/{{run.gameId}}/gameThumbnail"  width="60px" alt=""/></div>
+            <div class="arcade-title">{{run.title}}</div>
+        </a>
+
+    </section>
+</div>

@@ -12,7 +12,26 @@
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "nl.welten.arlearn.hands"
+        },
+        "cordova-plugin-googleplus": {
+            "PACKAGE_NAME": "nl.welten.arlearn.hands"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "nl.welten.arlearn.hands"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "nl.welten.arlearn.hands"
+        },
+        "com.mbppower.camerapreview": {
+            "PACKAGE_NAME": "nl.welten.arlearn.hands"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "nl.welten.arlearn.hands"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "nl.welten.arlearn.hands"
+        }
+    }
 }

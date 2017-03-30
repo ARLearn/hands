@@ -1,3 +1,43 @@
-.test {
-    color: #bbde37;
+:root {
+    --primaryColor: #9b59b6;
+    --primaryColorLight: #b873d4;
+    --primaryColorDark: #33485f;
+    --primaryColorHighlight: #ffffff;
+    --highlightColor: #ffffff;
+    --buttonColor: #3498db;
+    --buttonAlternativeColor: #14ddb3;
+    --backgroundColor: #dcd5cb;
+    --backgroundColorLight: #f5ede2;
+    --backgroundColorDark: #948c7f;
+    --text: #95a5a6;
+    --textLight: #ffffff;
+    --textDark: #33485f;
+    --textInactive: #c5beb2;
+    --transparency: #99000000;
+}
+
+body {
+    background-color: var(--backgroundColor);
+}
+
+.arlMessage {
+    min-height:840px;
+}
+
+.title {
+    color: var(--primaryColorDark);
+}
+
+.button {
+    color: var(--buttonColor);
+}
+
+.btnCls {
+    background-color: var(--buttonColor);
+    border: none;
+    color: var(--primaryColorHighlight);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
 }

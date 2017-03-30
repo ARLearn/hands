@@ -45,6 +45,23 @@ angular.module('ARLearn').directive('arlSingleChoice', ['$sce', function($sce) {
     };
 }]);
 
+angular.module('ARLearn').directive('arlMultipleChoice', ['$sce', function($sce) {
+    return {
+        replace: true,
+        restrict: "E",
+        scope: {
+            item: "=",
+            runId: "=runid"
+        },
+        templateUrl: '/templates/directives/messages/multipleChoice.html',
+        link: function($scope, element) {
+            $scope.richText = $sce.trustAsHtml($scope.item.richText);
+        },
+        controller: 'MultipleChoiceController'
+
+    };
+}]);
+
 angular.module('ARLearn').directive('arlImageClickQuestion', ['$sce', function($sce) {
     return {
         replace: true,

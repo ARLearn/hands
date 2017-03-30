@@ -42,6 +42,7 @@ angular.module('ARLearn').service('RunService', function ($q, Run, CacheFactory)
                             dataCache.put(id, data);
                             gameToRuns[data.gameId][id] = data;
                             runs[id] = data;
+                            deferred.resolve(runs[id]);
                         }
 
                     }

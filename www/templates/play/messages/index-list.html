@@ -1,0 +1,18 @@
+<arl-play-header></arl-play-header>
+
+<div id="content">
+    <section id="arcade-menu" class="arcade-menu">
+        <!--<a href="#/play/run/{{runId}}/game/{{gameId}}/message-{{getItem(visibility.generalItemId).type}}/{{visibility.generalItemId}}"-->
+           <!--class="arcade-game"  ng-repeat="visibility in visibilities | orderBy: '-timeStamp'">-->
+            <!--<div class="arcade-icon"><img ng-src="https://streetlearn.appspot.com/game/{{game.gameId}}/gameThumbnail"  width="60px" alt=""/></div>-->
+            <!--<div class="arcade-title">{{getItem(visibility.generalItemId).name}}</div>-->
+        <!--</a>-->
+
+
+        <a href="#/play/run/{{runId}}/game/{{gameId}}/message-{{getItem(visibility.generalItemId).type}}/{{visibility.generalItemId}}"
+           class="arcade-game"  ng-repeat="(itemId, visibility) in visibleItems | orderByField:'timeStamp':false" >
+            <div class="arcade-icon"><img ng-src="https://streetlearn.appspot.com/game/{{game.gameId}}/gameThumbnail"  width="60px" alt=""/></div>
+            <div class="arcade-title">{{getItem(visibility.generalItemId).name}} </div>
+        </a>
+    </section>
+</div>
